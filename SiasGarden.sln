@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiasGarden", "SiasGarden\SiasGarden.csproj", "{96E1FCC0-5216-4D54-BC8D-5A0267F9FECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiasGarden.Web", "SiasGarden\SiasGarden.Web.csproj", "{96E1FCC0-5216-4D54-BC8D-5A0267F9FECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiasGarden.DataAccess", "SiasGarden.DataAccess\SiasGarden.DataAccess.csproj", "{77743142-903B-4843-A5A3-E9B0CA4B4C93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiasGarden.Models", "SiasGarden.Models\SiasGarden.Models.csproj", "{ADA635DE-95A1-42EA-AFFC-4DA5CE686AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiasGarden.Utility", "SiasGarden.Utility\SiasGarden.Utility.csproj", "{3BE6D7D3-26A2-4F51-BCFE-9E13EF5C6210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{96E1FCC0-5216-4D54-BC8D-5A0267F9FECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96E1FCC0-5216-4D54-BC8D-5A0267F9FECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96E1FCC0-5216-4D54-BC8D-5A0267F9FECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77743142-903B-4843-A5A3-E9B0CA4B4C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77743142-903B-4843-A5A3-E9B0CA4B4C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77743142-903B-4843-A5A3-E9B0CA4B4C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77743142-903B-4843-A5A3-E9B0CA4B4C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADA635DE-95A1-42EA-AFFC-4DA5CE686AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADA635DE-95A1-42EA-AFFC-4DA5CE686AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADA635DE-95A1-42EA-AFFC-4DA5CE686AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADA635DE-95A1-42EA-AFFC-4DA5CE686AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE6D7D3-26A2-4F51-BCFE-9E13EF5C6210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE6D7D3-26A2-4F51-BCFE-9E13EF5C6210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE6D7D3-26A2-4F51-BCFE-9E13EF5C6210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE6D7D3-26A2-4F51-BCFE-9E13EF5C6210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
