@@ -7,6 +7,9 @@ namespace SiasGarden.DataAccess.Repository;
 public class UnitOfWork : IUnitOfWork
 {
     public ICategoryRepository Category { get; private set; }
+    public IProductRepository Product { get; private set; }
+    public ISubCategoryRepository SubCategory { get; private set; }
+    public IProductImageRepository ProductImage { get; private set; }
 
     private ApplicationDbContext _db;
 
@@ -14,10 +17,13 @@ public class UnitOfWork : IUnitOfWork
     {
         _db = db;
         Category=new CategoryRepository(_db);
+        Product=new ProductRepository(_db);
+        SubCategory=new SubCategoryRepository(_db);
+        ProductImage=new ProductImageRepository(_db);
     }
 
     public void Save()
     {
-        throw new NotImplementedException();
+       _db.SaveChanges();
     }
 }

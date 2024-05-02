@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace SiasGarden.Models;
 
@@ -9,5 +10,6 @@ public class SubCategory
     public string Name { get; set; }
     public string? Description { get; set; }
 
+    [ValidateNever]
     public List<Product> Products { get; set; }
 }

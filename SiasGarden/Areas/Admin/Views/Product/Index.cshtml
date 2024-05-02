@@ -1,0 +1,54 @@
+﻿@model List<Product>
+
+<div class="card shadow border-0 mt-4">
+
+    <div class=" card-header bg-success-subtle bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-success-emphasis py-2">Produkter</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i>
+                    Ny Produkt
+                </a>
+            </div>
+        </div>
+
+        <table id="tblData"  class="table table-borded  table-striped table-light" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-success-emphasis">
+                        Namn
+                    </th>
+                    <th class="text-success-emphasis">
+                        Latinskt Namn
+                    </th>
+                   
+                    <th class="text-success-emphasis">
+                        Pris
+                    </th>
+                    <th class="text-success-emphasis">
+                        Kategori
+                    </th>
+
+                    <th class="text-success-emphasis">
+                       
+                    </th>
+                </tr>
+            </thead>
+           
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+
+}

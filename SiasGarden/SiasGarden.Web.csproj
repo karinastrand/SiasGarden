@@ -22,4 +22,9 @@
     <ProjectReference Include="..\SiasGarden.Utility\SiasGarden.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\NewFolder\" />
+    <Folder Include="wwwroot\startimages\products\" />
+  </ItemGroup>
+
 </Project>

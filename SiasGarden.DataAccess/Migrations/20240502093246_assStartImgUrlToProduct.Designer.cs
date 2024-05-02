@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiasGarden.DataAccess.Data;
 
@@ -10,9 +11,11 @@ using SiasGarden.DataAccess.Data;
 namespace SiasGarden.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240502093246_assStartImgUrlToProduct")]
+    partial class assStartImgUrlToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,12 +148,6 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Property<string>("StartImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ZoneFrom")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ZoneTo")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -167,9 +164,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Rosa Taneiglat",
                             Name = "Nostalgi",
                             Number = 10,
-                            Price = 699.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 699.0
                         },
                         new
                         {
@@ -180,9 +175,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Rose Lampion",
                             Name = "Lampion",
                             Number = 10,
-                            Price = 999.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 999.0
                         },
                         new
                         {
@@ -193,9 +186,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Lamprocapnos specabilis Valentine",
                             Name = "Löjtnatshjärta Valentine",
                             Number = 20,
-                            Price = 199.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 199.0
                         },
                         new
                         {
@@ -206,9 +197,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Lamprocapnos specabilis",
                             Name = "Löjtnadshjärta",
                             Number = 10,
-                            Price = 179.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 179.0
                         },
                         new
                         {
@@ -218,9 +207,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Klasblommig ros med kompakt växtsätt. Remonterar från sommar till höst med fyllda aprikosgula blommor. Medelstark doft. Frisk sort. Trivs i sol-halvskugga i väldränerad näringsrik jord.",
                             Name = "Hansestadt Rostock",
                             Number = 20,
-                            Price = 699.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 699.0
                         },
                         new
                         {
@@ -231,9 +218,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Thymus Coccineus",
                             Name = "Purpurtimjan",
                             Number = 3,
-                            Price = 59.899999999999999,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 59.899999999999999
                         },
                         new
                         {
@@ -244,9 +229,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Hudrangea panicilata Sundae fraise",
                             Name = "Vippoprtensia Sundaw fraise",
                             Number = 5,
-                            Price = 699.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 699.0
                         },
                         new
                         {
@@ -257,9 +240,7 @@ namespace SiasGarden.DataAccess.Migrations
                             LatinName = "Hudrangea panicilata Living Pink & Rose",
                             Name = "Vipphortensia Living Pink & Rose",
                             Number = 5,
-                            Price = 349.0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 349.0
                         });
                 });
 
