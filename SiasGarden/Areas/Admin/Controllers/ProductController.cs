@@ -4,6 +4,7 @@ using SiasGarden.DataAccess.Data;
 using SiasGarden.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiasGarden.Models.ViewModels;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace SiasGarden.Areas.Admin.Controllers;
 [Area("Admin")]
@@ -95,38 +96,7 @@ public class ProductController : Controller
         }
      }
   
-    public IActionResult Delete(int? id)
-    {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-        Product? productFromDb = _unitOfWork.Product.Get(c => c.Id == id);
-        if (productFromDb == null)
-        {
-            return NotFound();
-        }
-        return View(productFromDb);
-    }
-    [HttpPost, ActionName("Delete")]
-    public IActionResult DeletePost(int? id)
-    {
-        if (ModelState.IsValid)
-        {
-            Product product = _unitOfWork.Product.Get(c => c.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            _unitOfWork.Product.Remove(product);
-
-            _unitOfWork.Save();
-            TempData["success"] = "Kategorin togs bort";
-            return RedirectToAction("Index");
-        }
-        return View();
-
-    }
+  
 
     #region APICALLS
 
@@ -135,6 +105,27 @@ public class ProductController : Controller
     {
         List<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
         return Json(new { data = productList });
+    }
+  
+    public IActionResult Delete(int? id)
+    {
+       var product=_unitOfWork.Product.Get(u=>u.Id == id);
+        if(product == null)
+        {
+            return Json(new {success = false, message="Fel vid borttagning"});
+        }
+        if (!string.IsNullOrEmpty(product.StartImageUrl))
+        {
+            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, product.StartImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+        }
+        _unitOfWork.Product.Remove(product);
+        _unitOfWork.Save();
+        return Json(new { success = true, message = "Produkten har tagits bort" });
+        
     }
     #endregion
 
