@@ -32,6 +32,7 @@ public class Product
     [Display(Name = "Växtzon min")]
     [Range(0, 8)]
     public int ZoneFrom { get; set; }
+    public int Size { get; set; }
     public string? StartImageUrl { get; set; }
     public int CategoryId { get; set; }
 
