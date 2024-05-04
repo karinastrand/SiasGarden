@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SiasGarden.Models;
 
 namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -58,6 +59,7 @@ namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            public string FirstName { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -96,6 +98,7 @@ namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
             if (!ModelState.IsValid)
             {
                 await LoadAsync(user);
+                
                 return Page();
             }
 
@@ -103,6 +106,7 @@ namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
             if (Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
+
                 if (!setPhoneResult.Succeeded)
                 {
                     StatusMessage = "Unexpected error when trying to set phone number.";

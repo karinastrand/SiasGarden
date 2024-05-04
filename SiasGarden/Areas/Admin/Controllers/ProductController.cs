@@ -5,9 +5,14 @@ using SiasGarden.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiasGarden.Models.ViewModels;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.AspNetCore.Authorization;
+using SiasGarden.Utility;
 
 namespace SiasGarden.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = SD.Role_Admin)]
+[Authorize(Roles = SD.Role_Employee)]
+
 public class ProductController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

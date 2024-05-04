@@ -2,9 +2,15 @@
 using SiasGarden.Models;
 using SiasGarden.DataAccess.Data;
 using SiasGarden.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using SiasGarden.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SiasGarden.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles=SD.Role_Admin)]
+[Authorize(Roles = SD.Role_Employee)]
+
 public class CategoryController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
