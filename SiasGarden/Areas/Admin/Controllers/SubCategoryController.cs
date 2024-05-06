@@ -17,34 +17,15 @@ public class SubCategoryController : Controller
         List<SubCategory> SubCategoryList = _unitOfWork.SubCategory.GetAll().ToList();
         return View(SubCategoryList);
     }
-    public IActionResult Create()
+    
+    public IActionResult Upsert(int? id)
     {
-        return View();
-    }
-    [HttpPost]
-    public IActionResult Create(SubCategory subCategory)
-    {
-        if (ModelState.IsValid)
+        SubCategory subCategoryFromDb=new SubCategory();
+        if(id != null) 
         {
-            _unitOfWork.SubCategory.Add(subCategory);
-            _unitOfWork.Save();
-            TempData["success"] = "Kategorin skapades";
-            return RedirectToAction("Index");
+             subCategoryFromDb = _unitOfWork.SubCategory.Get(c => c.Id == id);
         }
-        return View();
 
-    }
-    public IActionResult Edit(int? id)
-    {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-        SubCategory? subCategoryFromDb = _unitOfWork.SubCategory.Get(c => c.Id == id);
-        if (subCategoryFromDb == null)
-        {
-            return NotFound();
-        }
         return View(subCategoryFromDb);
     }
     [HttpPost]

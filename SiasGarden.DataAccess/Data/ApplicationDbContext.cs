@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<SubCategory> SubCategories { get; set; }
     public DbSet<ProductImage> ProductImages { get; set; }
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -130,8 +131,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 " blommor med körsbärsröda kanter. Blommar från juni till oktober. Trivs i sol-halvskugga i väldränerad, " +
                 "näringsrik jord",
                 Price =699,
-                BulkDiscount =10,
-                Number =10,
+                
                 CategoryId=1
             },
             new Product
@@ -142,8 +142,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description="Otroligt vacker ros med buskigt växtsätt. Remonterar från sommar till höst med fylllda gula" +
                 " blommor och röda anstrykningar på yttre kronbladen. Friskt sort. Trovs soligt i väldränerad, näringsrik jord.",
                 Price=999,
-                BulkDiscount=10,
-                Number =10,
+                
                 CategoryId=1
             },
             new Product
@@ -155,8 +154,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description ="Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning " +
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
                 Price=199,
-                BulkDiscount=15,
-                Number =20,
+                
                 CategoryId=2
             },
             new Product
@@ -167,8 +165,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description = "Vacker lättodlad perenn med hjärformade blommor i rosa och vitt. Klipp ner efter blomning " +
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
                 Price = 179,
-                BulkDiscount = 10,
-                Number = 10,
+              
                 CategoryId = 2
             },
 
@@ -179,8 +176,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description="Klasblommig ros med kompakt växtsätt. Remonterar från sommar till höst med fyllda aprikosgula " +
                 "blommor. Medelstark doft. Frisk sort. Trivs i sol-halvskugga i väldränerad näringsrik jord.",
                 Price=699,
-                BulkDiscount=10,
-                Number=20,
+              
                 CategoryId=1
             },
             new Product
@@ -192,8 +188,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 "blomning i rödviolett blir perfekt marktäckare i stenparti eller som kantväxt. Trivs soligt i väldränerad, "+
                 "mager jord.",
                 Price=59.9, 
-                BulkDiscount=5,
-                Number= 3,
+                
                 CategoryId=2
             },
             new Product
@@ -204,8 +199,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description="Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de" +
                 " åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                 Price=699,
-                BulkDiscount=10,
-                Number=5,
+                
                 CategoryId=5
             },
             new Product
@@ -216,8 +210,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de" +
                 " åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                 Price = 349,
-                BulkDiscount = 10,
-                Number = 5,
+                
                 CategoryId = 5
             }
            );

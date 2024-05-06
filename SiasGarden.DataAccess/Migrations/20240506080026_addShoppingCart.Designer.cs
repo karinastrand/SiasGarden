@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiasGarden.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using SiasGarden.DataAccess.Data;
 namespace SiasGarden.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240506080026_addShoppingCart")]
+    partial class addShoppingCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -529,33 +532,6 @@ namespace SiasGarden.DataAccess.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("SiasGarden.Models.ShoppingCart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCarts");
-                });
-
             modelBuilder.Entity("SiasGarden.Models.SubCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -616,6 +592,30 @@ namespace SiasGarden.DataAccess.Migrations
                             Id = 8,
                             Name = "Fruktträd"
                         });
+                });
+
+            modelBuilder.Entity("SiasGarden.Models.ViewModels.ShoppingCart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -706,7 +706,7 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SiasGarden.Models.ShoppingCart", b =>
+            modelBuilder.Entity("SiasGarden.Models.ViewModels.ShoppingCart", b =>
                 {
                     b.HasOne("SiasGarden.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()

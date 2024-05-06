@@ -26,8 +26,7 @@ internal class ProductRepository : Repository<Product>, IProductRepository
             productFromDb.Price = product.Price;
             productFromDb.ZoneFrom= product.ZoneFrom;
             productFromDb.ZoneTo= product.ZoneTo;
-            productFromDb.BulkDiscount= product.BulkDiscount;
-            productFromDb.Number= product.Number;
+        
             productFromDb.LatinName= product.LatinName;
             productFromDb.CategoryId= product.CategoryId;
             if(product.StartImageUrl!=null)

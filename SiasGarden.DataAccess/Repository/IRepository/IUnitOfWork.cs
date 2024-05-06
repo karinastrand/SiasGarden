@@ -8,5 +8,7 @@ public  interface IUnitOfWork
     IProductRepository Product { get; }
     ISubCategoryRepository SubCategory { get; }
     IProductImageRepository ProductImage { get; }
+    IShoppingCartRepository ShoppingCart { get; }
+    IApplicationUserRepository ApplicationUser { get; }
     void Save();
 }

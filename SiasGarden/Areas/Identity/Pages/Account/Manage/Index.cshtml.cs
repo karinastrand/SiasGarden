@@ -57,21 +57,37 @@ namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefon")]
             public string PhoneNumber { get; set; }
+            [Display(Name = "Förnamn")]
             public string FirstName { get; set; }
+            [Display(Name = "Efternamn")]
+            public string LastName { get; set; }
+            [Display(Name = "Gatuadress")]
+            public string StreetAddress { get; set; }
+            [Display(Name = "Ort")]
+            public string City { get; set; }
+            [Display(Name = "Postnummer")]
+            public string PostalCode { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+           
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName=user.FirstName,
+                LastName=user.LastName,
+                StreetAddress=user.StreetAddress,
+                City=user.City,
+                    
+                PostalCode=user.PostalCode
                 
             };
         }
@@ -99,21 +115,35 @@ namespace SiasGarden.Web.Areas.Identity.Pages.Account.Manage
             if (!ModelState.IsValid)
             {
                 await LoadAsync(user);
-                
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.StreetAddress = Input.StreetAddress;
+                user.City = Input.City;
+                user.PostalCode = Input.PostalCode;
                 return Page();
+            }
+            else
+            {
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.StreetAddress = Input.StreetAddress;
+                user.City = Input.City;
+                user.PostalCode = Input.PostalCode;
+                var setProfile=await _userManager.UpdateAsync(user);
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-
+                
                 if (!setPhoneResult.Succeeded)
                 {
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
             }
+
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

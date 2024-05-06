@@ -19,20 +19,24 @@ public class Product
     [Display(Name = "Pris")]
     [Range(0,5000)]
     public double Price { get; set; }
-    [Display(Name = "Mängdrabatt, %")]
-    [Range(0,100)]
-    public int BulkDiscount { get; set; }
-    [Display(Name = "Antal")]
+    [Display(Name = "Ljus")]
+    public string? Light {  get; set; }
+    [Display(Name = "Vikt")]
+    public double Weight { get; set; }
+    [Display(Name = "Höjd")]
+    public int Height { get; set; }
+    [Display(Name = "Bredd")]
+    public int Width { get; set; }
+    [Display(Name = "Storlek")]
+    public int Size { get; set; }
 
-    [Range(0, 100)]
-    public int Number { get; set; }
     [Display(Name= "Växtzon max")]
     [Range(0,8)]
     public int ZoneTo { get; set; }
     [Display(Name = "Växtzon min")]
     [Range(0, 8)]
     public int ZoneFrom { get; set; }
-    public int Size { get; set; }
+   
     public string? StartImageUrl { get; set; }
     public int CategoryId { get; set; }
 

@@ -10,6 +10,8 @@ public class UnitOfWork : IUnitOfWork
     public IProductRepository Product { get; private set; }
     public ISubCategoryRepository SubCategory { get; private set; }
     public IProductImageRepository ProductImage { get; private set; }
+    public IShoppingCartRepository ShoppingCart { get; private set; }
+    public IApplicationUserRepository ApplicationUser { get; private set; }
 
     private ApplicationDbContext _db;
 
@@ -20,6 +22,8 @@ public class UnitOfWork : IUnitOfWork
         Product=new ProductRepository(_db);
         SubCategory=new SubCategoryRepository(_db);
         ProductImage=new ProductImageRepository(_db);
+        ShoppingCart=new ShoppingCartRepository(_db);
+        ApplicationUser=new ApplicationUserRepository(_db);
     }
 
     public void Save()
