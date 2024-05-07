@@ -20,5 +20,6 @@ public class ShoppingCart
     [ForeignKey("ApplicationUserId")]
     [ValidateNever]
     public ApplicationUser ApplicationUser { get; set; }
+    
 
 }

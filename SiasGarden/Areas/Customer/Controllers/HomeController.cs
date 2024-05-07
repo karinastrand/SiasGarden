@@ -55,7 +55,7 @@ public class HomeController : Controller
             oldShoppingCart.Count += shoppingCart.Count;
             _unitOfWork.ShoppingCart.Update(oldShoppingCart);
         }
-       
+        TempData["success"] = "Kundvagnen har uppdaterats";
         _unitOfWork.Save();
 
         return RedirectToAction("Index");  
