@@ -11,7 +11,7 @@ using SiasGarden.Utility;
 namespace SiasGarden.Areas.Admin.Controllers;
 [Area("Admin")]
 [Authorize(Roles = SD.Role_Admin)]
-[Authorize(Roles = SD.Role_Employee)]
+
 
 public class ProductController : Controller
 {
@@ -24,7 +24,7 @@ public class ProductController : Controller
     }
     public IActionResult Index()
     {
-        List<Product> ProductList = _unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
+        List<Product> ProductList = _unitOfWork.Product.GetAll(includeProperties:"Category,SubCategory").ToList();
         
         return View(ProductList);
     }
@@ -36,6 +36,11 @@ public class ProductController : Controller
         {
             Product=new Product(),
             CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            }),
+            SubCategoryList = _unitOfWork.SubCategory.GetAll().Select(u => new SelectListItem
             {
                 Text = u.Name,
                 Value = u.Id.ToString()
@@ -96,7 +101,11 @@ public class ProductController : Controller
                 Text = u.Name,
                 Value = u.Id.ToString()
             });
-           
+            productVM.SubCategoryList = _unitOfWork.SubCategory.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
             return View(productVM);
         }
      }
@@ -108,7 +117,7 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult GetAll()
     {
-        List<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+        List<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,SubCategory").ToList();
         return Json(new { data = productList });
     }
   

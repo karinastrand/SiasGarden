@@ -155,21 +155,6 @@ namespace SiasGarden.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ProductSubCategory", b =>
-                {
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubCategoriesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductsId", "SubCategoriesId");
-
-                    b.HasIndex("SubCategoriesId");
-
-                    b.ToTable("ProductsSubCategories", (string)null);
-                });
-
             modelBuilder.Entity("SiasGarden.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -293,7 +278,7 @@ namespace SiasGarden.DataAccess.Migrations
                         {
                             Id = 3,
                             DisplayOrder = 3,
-                            Name = "Fröer"
+                            Name = "Ettåriga"
                         },
                         new
                         {
@@ -305,25 +290,25 @@ namespace SiasGarden.DataAccess.Migrations
                         {
                             Id = 5,
                             DisplayOrder = 5,
-                            Name = "Buskar"
+                            Name = "Hortensia"
                         },
                         new
                         {
                             Id = 6,
                             DisplayOrder = 6,
-                            Name = "Träd"
+                            Name = "Buskar"
                         },
                         new
                         {
                             Id = 7,
                             DisplayOrder = 7,
-                            Name = "Tillbehör"
+                            Name = "Träd"
                         },
                         new
                         {
                             Id = 8,
                             DisplayOrder = 8,
-                            Name = "Redskap"
+                            Name = "Ormbunkar"
                         });
                 });
 
@@ -466,6 +451,9 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Property<string>("StartImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Weight")
                         .HasColumnType("float");
 
@@ -482,6 +470,8 @@ namespace SiasGarden.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("SubCategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
@@ -495,6 +485,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Nostalgi",
                             Price = 699.0,
                             Size = 0,
+                            SubCategoryId = 3,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -510,6 +501,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Lampion",
                             Price = 999.0,
                             Size = 0,
+                            SubCategoryId = 3,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -525,6 +517,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Löjtnatshjärta Valentine",
                             Price = 199.0,
                             Size = 0,
+                            SubCategoryId = 6,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -540,6 +533,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Löjtnadshjärta",
                             Price = 179.0,
                             Size = 0,
+                            SubCategoryId = 6,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -554,6 +548,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Hansestadt Rostock",
                             Price = 699.0,
                             Size = 0,
+                            SubCategoryId = 3,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -569,6 +564,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Name = "Purpurtimjan",
                             Price = 59.899999999999999,
                             Size = 0,
+                            SubCategoryId = 1,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -581,9 +577,10 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                             Height = 0,
                             LatinName = "Hudrangea panicilata Sundae fraise",
-                            Name = "Vippoprtensia Sundaw fraise",
+                            Name = "Sundaw fraise",
                             Price = 699.0,
                             Size = 0,
+                            SubCategoryId = 10,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -596,9 +593,10 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                             Height = 0,
                             LatinName = "Hudrangea panicilata Living Pink & Rose",
-                            Name = "Vipphortensia Living Pink & Rose",
+                            Name = "Living Pink & Rose",
                             Price = 349.0,
                             Size = 0,
+                            SubCategoryId = 10,
                             Weight = 0.0,
                             Width = 0,
                             ZoneFrom = 0,
@@ -681,7 +679,7 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Klätterros"
+                            Name = "Kryddväxt"
                         },
                         new
                         {
@@ -706,7 +704,7 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 6,
-                            Name = "Jord"
+                            Name = "Jordröksväxt"
                         },
                         new
                         {
@@ -717,6 +715,21 @@ namespace SiasGarden.DataAccess.Migrations
                         {
                             Id = 8,
                             Name = "Fruktträd"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Vidjehortensia"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Vipphortensia"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Klätterhortensia"
                         });
                 });
 
@@ -771,21 +784,6 @@ namespace SiasGarden.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductSubCategory", b =>
-                {
-                    b.HasOne("SiasGarden.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SiasGarden.Models.SubCategory", null)
-                        .WithMany()
-                        .HasForeignKey("SubCategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("SiasGarden.Models.OrderDetail", b =>
                 {
                     b.HasOne("SiasGarden.Models.OrderHeader", "OrderHeader")
@@ -824,7 +822,15 @@ namespace SiasGarden.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SiasGarden.Models.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("SubCategory");
                 });
 
             modelBuilder.Entity("SiasGarden.Models.ProductImage", b =>

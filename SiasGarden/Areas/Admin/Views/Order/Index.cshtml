@@ -1,0 +1,76 @@
+﻿@{
+    var status = Context.Request.Query["status"];
+  
+    var inprocess = "text-success";
+    var completed = "text-success";
+    var approved = "text-success";
+    var all = "text-success";
+
+    switch (status)
+    {
+       
+        case "inprocess":
+            inprocess = "active text-white bg-success";
+            break;
+        case "completed":
+            completed = "active text-white bg-success";
+            break;
+        case "approved":
+            approved = "active text-white bg-success";
+            break;
+       default:
+            all = "active text-white bg-success";
+            break;
+    }
+
+}
+
+<div class="card shadow border-0 mt-4">
+
+    <div class=" card-header bg-success-subtle bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-success-emphasis py-2">Orderlista</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between pb-5 pt-2">
+            <span></span>
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="inprocess">
+                    <li class="list-group-item @inprocess">På gång</li>
+                </a>
+               
+                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="completed">
+                    <li class="list-group-item @completed">Avslutade</li>
+                </a>
+                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="approved">
+                    <li class="list-group-item @approved">Godkända</li>
+                </a>
+                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="all">
+                    <li class="list-group-item @all">Alla</li>
+                </a>
+            </ul>
+        </div>
+          <table id="tblData" class="table table-bordered  table-striped  table-light" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-success-emphasis" > ID </th>
+                    <th class="text-success-emphasis"> Förnamn </th>
+                    <th class="text-success-emphasis"> Efternamn </th>
+                    <th class="text-success-emphasis">Telefon </th>
+                    <th class="text-success-emphasis">Email </th>  
+                    <th class="text-success-emphasis">Status </th> 
+                    <th class="text-success-emphasis">Totalt</th>
+                    <th></th>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/order.js"></script>
+
+}

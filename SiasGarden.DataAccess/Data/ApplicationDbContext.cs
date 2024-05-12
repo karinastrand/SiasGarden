@@ -13,21 +13,16 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Product> Products { get; set; }
     public DbSet<SubCategory> SubCategories { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<ProductImage> ProductImages { get; set; }
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public DbSet<OrderHeader> OrderHeaders { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder) 
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Product>()
-            .HasMany(s => s.SubCategories)
-            .WithMany(s => s.Products)
-            .UsingEntity(j => j.ToTable("ProductsSubCategories")); base.OnModelCreating(modelBuilder);
-
         modelBuilder.Entity<Category>().HasData(
             new Category
             {
@@ -44,7 +39,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Category
             {
                 Id = 3,
-                Name = "Fröer",
+                Name = "Ettåriga",
                 DisplayOrder = 3
             },
             new Category 
@@ -57,25 +52,25 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Category
             {
                 Id = 5,
-                Name = "Buskar",
+                Name = "Hortensia",
                 DisplayOrder = 5
             },
             new Category
             {
                 Id = 6,
-                Name = "Träd",
+                Name = "Buskar",
                 DisplayOrder = 6
             },
             new Category
             {
                 Id = 7,
-                Name = "Tillbehör",
+                Name = "Träd",
                 DisplayOrder = 7
             },
             new Category
             {
                 Id = 8,
-                Name = "Redskap",
+                Name = "Ormbunkar",
                 DisplayOrder = 8
             }
            );
@@ -83,7 +78,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new SubCategory
             {
                 Id = 1,
-                Name = "Klätterros"
+                Name = "Kryddväxt"
             },
             new SubCategory
             {
@@ -109,7 +104,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new SubCategory
             {
                 Id = 6,
-                Name = "Jord"
+                Name = "Jordröksväxt"
             },
            
             new SubCategory
@@ -121,7 +116,22 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             {
                 Id = 8,
                 Name = "Fruktträd"
-            }
+            },
+             new SubCategory
+             {
+                 Id = 9,
+                 Name = "Vidjehortensia"
+             },
+              new SubCategory
+              {
+                  Id = 10,
+                  Name = "Vipphortensia"
+              },
+               new SubCategory
+               {
+                   Id = 11,
+                   Name = "Klätterhortensia"
+               }
            );
         modelBuilder.Entity<Product>().HasData(
             new Product
@@ -133,8 +143,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 " blommor med körsbärsröda kanter. Blommar från juni till oktober. Trivs i sol-halvskugga i väldränerad, " +
                 "näringsrik jord",
                 Price =699,
-                
-                CategoryId=1
+                CategoryId=1,
+                SubCategoryId=3
             },
             new Product
             { 
@@ -143,9 +153,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 LatinName ="Rose Lampion",
                 Description="Otroligt vacker ros med buskigt växtsätt. Remonterar från sommar till höst med fylllda gula" +
                 " blommor och röda anstrykningar på yttre kronbladen. Friskt sort. Trovs soligt i väldränerad, näringsrik jord.",
-                Price=999,
-                
-                CategoryId=1
+                Price=999,           
+                CategoryId=1,
+                SubCategoryId = 3
             },
             new Product
             {
@@ -155,9 +165,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 LatinName = "Lamprocapnos specabilis Valentine",
                 Description ="Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning " +
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
-                Price=199,
-                
-                CategoryId=2
+                Price=199,              
+                CategoryId=2,
+                SubCategoryId = 6
             },
             new Product
             {
@@ -168,7 +178,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
                 Price = 179,
               
-                CategoryId = 2
+                CategoryId = 2,
+                SubCategoryId = 6
             },
 
             new Product
@@ -179,7 +190,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 "blommor. Medelstark doft. Frisk sort. Trivs i sol-halvskugga i väldränerad näringsrik jord.",
                 Price=699,
               
-                CategoryId=1
+                CategoryId=1,
+                SubCategoryId = 3
             },
             new Product
             {
@@ -191,29 +203,33 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 "mager jord.",
                 Price=59.9, 
                 
-                CategoryId=2
+                CategoryId=2,
+                SubCategoryId = 1
             },
             new Product
             {
                 Id = 7,
-                Name = "Vippoprtensia Sundaw fraise",
+                Name = "Sundaw fraise",
                 LatinName="Hudrangea panicilata Sundae fraise",
                 Description="Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de" +
                 " åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                 Price=699,
                 
-                CategoryId=5
+                CategoryId=5,
+                SubCategoryId=10
+
             },
             new Product
             {
                 Id = 8,
-                Name = "Vipphortensia Living Pink & Rose",
+                Name = "Living Pink & Rose",
                 LatinName = "Hudrangea panicilata Living Pink & Rose",
                 Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de" +
                 " åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
                 Price = 349,
                 
-                CategoryId = 5
+                CategoryId = 5,
+                SubCategoryId = 10
             }
            );
 

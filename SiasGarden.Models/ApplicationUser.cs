@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SiasGarden.Models;
 
@@ -19,6 +20,8 @@ public  class ApplicationUser : IdentityUser
     public string? City { get; set; }
     [Display(Name ="Postnummer")]
     public string? PostalCode { get; set; }
+    [NotMapped]
+    public string Role {  get; set; }
  
     
 }

@@ -40,21 +40,22 @@
                 </div>
                 <div class="d-flex justify-content-between pt-2">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Glömt lösenordet?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" >Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" >Registrera en ny användare</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" >Resend email confirmation</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" >Sänd om emailbekräftelse</a>
                     </p>
                 </div>
             </form>
         </section>
     </div>
+    <div class="col-md-12 p-3 text-center"
             <section>
                 <p class="divider-text d-flex">eller</p>
-                <h3 class="text-success-emphasis">Registrera med annan tjänst.</h3>
+              
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {

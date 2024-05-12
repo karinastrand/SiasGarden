@@ -1,18 +1,26 @@
 var dataTable
 $(document).ready(function () {
     loadDataTable();
+    
 });
 
 function loadDataTable() {
 
-   dataTable= $('#tblData').DataTable({
+    dataTable = $('#tblData').DataTable({
+        language: {
+            search: "S\u00F6k:",
+            lengthMenu: " _MENU_ per sida",
+            info: "Visar _START_ till _END_ av _TOTAL_ poster"
+        },
+        scrollY:450,
        "ajax": { url: '/admin/product/getall' },
 
         "columns": [
-        { data: 'name', "width": "20%" },
-            { data: 'latinName', "width": "25%" },
+            { data: 'name', "width": "20%" },
+            { data: 'latinName', "width": "20%" },
             { data: 'price', "width": "10%" },
             { data: 'category.name', "width": "15%" },
+            { data: 'subCategory.name', "width": "10%" },
             {
                 data: 'id',
                 "render": function (data) {
@@ -22,7 +30,7 @@ function loadDataTable() {
                     </div>`
                 },
                
-                "width": "30%"
+                "width": "20%"
             }
     ]
     });
@@ -30,13 +38,14 @@ function loadDataTable() {
 
 function Delete(url) {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!!",
+        title: "\u00C4r du s\u00E4ker?",
+        text: "Du kommer inte att kunna \u00E5ngra det!!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        cancelButtonText: "Avbryt",
+        confirmButtonText: "Ja, ta bort den!"
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({

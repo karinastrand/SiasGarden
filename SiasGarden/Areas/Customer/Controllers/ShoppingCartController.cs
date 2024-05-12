@@ -41,14 +41,7 @@ public class ShoppingCartController : Controller
         
         return View(shoppingCartVM);
     }
-    public IActionResult Plus(int cartId)
-    {
-        var cartFromDb = _unitOfWork.ShoppingCart.Get(u=>u.Id== cartId);
-        cartFromDb.Count += 1;
-        _unitOfWork.ShoppingCart.Update(cartFromDb);
-        _unitOfWork.Save();
-        return RedirectToAction("Index");
-    }
+   
     public IActionResult Summary()
     {
         var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -113,7 +106,7 @@ public class ShoppingCartController : Controller
             _unitOfWork.OrderDetail.Add(orderDetail);
             _unitOfWork.Save();
         }
-        var domain = "https://localhost:7256/";
+        var domain = Request.Scheme+"://"+Request.Host.Value+"/";
         var options = new SessionCreateOptions
         {
             SuccessUrl = domain + $"Customer/ShoppingCart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
@@ -142,7 +135,7 @@ public class ShoppingCartController : Controller
         }
         var service = new SessionService();
         Session session =service.Create(options);
-        _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartVM.OrderHeader.Id, session.Id,session.PaymentIntentId);
+        _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
         _unitOfWork.Save();
         Response.Headers.Add("Location",session.Url);
         return new StatusCodeResult(303);
@@ -162,15 +155,26 @@ public class ShoppingCartController : Controller
             _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved,SD.PaymentStatusApproved);
             _unitOfWork.Save(); 
         }
+        HttpContext.Session.Clear();
         List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
             .GetAll(u => u.ApplicationUserId == orderHeader.ApplicationUserId).ToList();
         _unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
         _unitOfWork.Save();
         return View(id);
     }
-	public IActionResult Minus(int cartId)
+
+    public IActionResult Plus(int cartId)
     {
         var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+        cartFromDb.Count += 1;
+        _unitOfWork.ShoppingCart.Update(cartFromDb);
+        _unitOfWork.Save();
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult Minus(int cartId)
+    {
+        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true);
         if(cartFromDb.Count >1)
         { 
             cartFromDb.Count -= 1;
@@ -179,6 +183,8 @@ public class ShoppingCartController : Controller
         }
         else
         {
+            HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
+
             _unitOfWork.ShoppingCart.Remove(cartFromDb);
         }
         _unitOfWork.Save();
@@ -186,9 +192,11 @@ public class ShoppingCartController : Controller
     }
     public IActionResult Remove(int cartId)
     {
-        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
-        
+        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true) ;
+        HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
+
         _unitOfWork.ShoppingCart.Remove(cartFromDb);
+
         _unitOfWork.Save();
         return RedirectToAction("Index");
     }

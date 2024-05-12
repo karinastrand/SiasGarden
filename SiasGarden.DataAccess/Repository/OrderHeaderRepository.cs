@@ -44,7 +44,7 @@ internal class OrderHeaderRepository : Repository<OrderHeader>, IOrderHeaderRepo
         }
         if(!string.IsNullOrEmpty(paymentIntentId)) 
         {
-            orderHeaderFromDb.PaymentStatus = paymentIntentId;
+            orderHeaderFromDb.PaymentIntentId = paymentIntentId;
             orderHeaderFromDb.PaymentDate = DateTime.Now;   
         }
     }

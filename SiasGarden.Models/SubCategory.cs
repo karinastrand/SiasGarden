@@ -10,6 +10,5 @@ public class SubCategory
     public string Name { get; set; }
     public string? Description { get; set; }
 
-    [ValidateNever]
-    public List<Product> Products { get; set; }
+  
 }

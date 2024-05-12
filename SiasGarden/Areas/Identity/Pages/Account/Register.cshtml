@@ -7,6 +7,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="py-2 text-white">Registrera konto</h2>
+                <a class="btn btn-outline-success" asp-area="Admin" asp-controller="User" asp-action="Index" >Tillbaka</a>
             </div>
         </div>
     </div>
@@ -16,8 +17,17 @@
         
         <div class="col-md-12">
             <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <h3 class="text-success-emphasis text-center border-bottom pb-3 mb-4">Registrera ett nytt konto</h3>
-             
+                @if(User.IsInRole(SD.Role_Admin))
+                {
+                    <h3 class="text-success-emphasis text-center border-bottom pb-3 mb-4">Registrera användare - Administrationssida</h3>
+
+                }
+                else
+                {
+                    <h3 class="text-success-emphasis text-center border-bottom pb-3 mb-4">Registrera ett nytt konto</h3>
+
+                }
+    
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 
                 <div class="form-floating mb-3 col-12">
@@ -74,23 +84,26 @@
                         <label asp-for="Input.PhoneNumber" class="ms-2 text-muted">Telefon</label>
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                     </div>
-                
+                @if(User.IsInRole(SD.Role_Admin))
+                {
                     <div class="form-floating mb-3 col-md-6">
                         <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
                             <option disabled selected>--Select Role--</option>
                         </select>
                     </div>
+                }
                 </div>
                 <div class="col-12">
                     <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-success">Registrera konto</button>
                 </div>
             </form>
         </div>
-            <div class="col-md-12">
-                <section>
+            <div class="col-md-12 p-3 text-center">
+                @if(!User.IsInRole(SD.Role_Admin))
+                {
+                  <section>
                     <p class="divider-text d-flex pt-3">eller</p>
-                    <h3 class="text-success-emphasis">Registrera med annan tjänst.</h3>
-                
+                  
                     @{
                         if ((Model.ExternalLogins?.Count ?? 0) == 0)
                         {
@@ -118,6 +131,7 @@
                         }
                     }
                 </section>
+                }
             </div>
 
         </div>

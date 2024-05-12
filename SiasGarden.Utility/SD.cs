@@ -3,21 +3,20 @@ namespace SiasGarden.Utility;
 
 public static class SD
 {
-    public const string Role_Customer = "Customer";
-    public const string Role_Employee = "Employee";
-    public const string Role_Admin = "Admin";
-    public const string Role_AdminEmployee = "Admin, Employee";
+    public const string Role_Customer = "Kund";
+    public const string Role_Employee = "Anställd";
+    public const string Role_Admin = "Administratör";
+   
+	public const string StatusPending = "Pending";
+	public const string StatusApproved = "Godkänd";
+	public const string StatusInProcess = "På gång";
+	public const string StatusShipped = "Sänd";
+	public const string StatusCancelled = "Annulerad";
+    public const string StatusRefunded = "Återbetald";
 
-    public const string StatusPending = "Pending";
-	public const string StatusApproved = "Approved";
-	public const string StatusProcessing = "Processing";
-	public const string StatusShipped = "Shipped";
-	public const string StatusCanceled = "Canceled";
-	public const string StatusRefunded= "Refunded";
+    public const string PaymentStatusPending = "Väntande";
+	public const string PaymentStatusApproved = "Godkänd";
+	public const string PaymentStatusRejected = "Avvisad";
 
-	public const string PaymentStatusPending = "Pending";
-	public const string PaymentStatusApproved = "Approved";
-	public const string PaymentStatusRejected = "Rejected";
-
-
+	public const string SessionCart = "SessionShoppingCart";
 }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiasGarden.DataAccess.Repository.IRepository;
 using SiasGarden.Models;
+using SiasGarden.Utility;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -21,12 +22,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category");
+        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category,SubCategory");
         return View(productList);
     }
     public IActionResult Details(int productId)
     {
-        Product product=_unitOfWork.Product.Get(u=>u.Id == productId, includeProperties:"Category");
+        Product product=_unitOfWork.Product.Get(u=>u.Id == productId, includeProperties:"Category,SubCategory");
         ShoppingCart shoppingCart = new ShoppingCart()
         {
             Product = product,
@@ -49,17 +50,19 @@ public class HomeController : Controller
         {
             shoppingCart.ApplicationUserId = userId;
             _unitOfWork.ShoppingCart.Add(shoppingCart);
+            _unitOfWork.Save();
+            HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
+
         }
         else
         {
             oldShoppingCart.Count += shoppingCart.Count;
             _unitOfWork.ShoppingCart.Update(oldShoppingCart);
+            _unitOfWork.Save();
         }
         TempData["success"] = "Kundvagnen har uppdaterats";
-        _unitOfWork.Save();
 
         return RedirectToAction("Index");  
-       
     }
 
 

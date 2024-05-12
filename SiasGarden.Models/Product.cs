@@ -43,8 +43,11 @@ public class Product
     [ForeignKey("CategoryId")]
     [ValidateNever]
     public Category Category { get; set; }
+    public int SubCategoryId { get; set; }
+
+    [ForeignKey("SubCategoryId")]
     [ValidateNever]
-    public List<SubCategory> SubCategories { get; set; }
+    public SubCategory SubCategory { get; set; }
     [ValidateNever]
     public List<ProductImage> ProductImages { get; set; }
    
