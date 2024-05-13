@@ -37,7 +37,7 @@ public class Product
     [Range(0, 8)]
     public int ZoneFrom { get; set; }
    
-    public string? StartImageUrl { get; set; }
+   
     public int CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]

@@ -1,10 +1,10 @@
 ﻿@model Category
 
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-primary-subtle bg-gradient m-lg-0 py-2">
+<div class="card shadow border-0 mt-4 ">
+    <div class="card-header bg-success bg-gradient m-lg-0 py-2 rounded">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-primary-emphasis">@(Model.Id!=0?"Redigera kategori":"Ny kateogri")</h2>
+                <h2 class="text-white">@(Model.Id!=0?"Redigera kategori":"Ny kateogri")</h2>
             </div>
         </div>
     </div>
@@ -33,17 +33,17 @@
                     <div class="col-6 col-md-3">
                         @if (Model.Id == 0)
                         {
-                            <button type="submit" class="btn btn-success form-control">Spara</button>
+                            <button type="submit" class="btn btn-success form-control rounded">Spara</button>
                         }
                         else
                         {
-                            <button type="submit" class="btn btn-success form-control">Uppdatera</button>
+                            <button type="submit" class="btn btn-success form-control rounded">Uppdatera</button>
                         }
 
 
                     </div>
                     <div class="col-6 col-md-3">
-                        <a asp-controller="Category" asp-action="Index" class="btn btn-info form-control">Tillbaka till listan</a>
+                        <a asp-controller="Category" asp-action="Index" class="btn btn-primary form-control rounded">Tillbaka till listan</a>
 
                     </div>
                 </div>

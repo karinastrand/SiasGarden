@@ -448,9 +448,6 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
-                    b.Property<string>("StartImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SubCategoryId")
                         .HasColumnType("int");
 
@@ -617,9 +614,6 @@ namespace SiasGarden.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProdutId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

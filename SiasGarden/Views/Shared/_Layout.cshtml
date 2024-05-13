@@ -18,9 +18,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar bg-success-subtle border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar bg-success-subtle border-bottom box-shadow mb-2 ">
             <div class="container-fluid">
-                <a class="navbar-brand text-success-emphasis" asp-area="" asp-controller="Home" asp-action="Index">Sias Örtagård</a>
+                <a class="navbar-brand text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                   <img src="/images/SiasGarden3.png"  style="width:150px"/>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,37 +30,37 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-success-emphasis" asp-area="Customer" asp-controller="Home" asp-action="Index">Start</a>
+                            <a class="nav-link text-primary" asp-area="Customer" asp-controller="Home" asp-action="Index">Start</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-success-emphasis" asp-area="Admin" asp-controller="Order" asp-action="Index">Hantera Order</a>
+                            <a class="nav-link text-primary" asp-area="Admin" asp-controller="Order" asp-action="Index">Hantera Order</a>
                         </li>
                         @if(User.IsInRole(SD.Role_Admin ))
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-success-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Administration
                                 </a>
                                 <ul class="dropdown-menu bg-success-subtle">
                                     <li class="nav-item">
-                                        <a class="dropdown-item text-success-emphasis" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategorier</a>
+                                        <a class="dropdown-item text-primary" asp-area="Admin" asp-controller="Category" asp-action="Index">Kategorier</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dropdown-item text-success-emphasis" asp-area="Admin" asp-controller="SubCategory" asp-action="Index">UnderKategorier</a>
+                                        <a class="dropdown-item text-primary" asp-area="Admin" asp-controller="SubCategory" asp-action="Index">UnderKategorier</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dropdown-item text-success-emphasis" asp-area="Admin" asp-controller="Product" asp-action="Index">Produkter</a>
+                                        <a class="dropdown-item text-primary" asp-area="Admin" asp-controller="Product" asp-action="Index">Produkter</a>
                                     </li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li class="nav-item">
-                                        <a class="dropdown-item text-success-emphasis" asp-area="Admin" asp-controller="User" asp-action="Index">Användarhantering</a>
+                                        <a class="dropdown-item text-primary" asp-area="Admin" asp-controller="User" asp-action="Index">Användarhantering</a>
                                     </li>
                                 </ul>
                             </li>
                         }
                     
                             <li class="nav-item">
-                                <a class="nav-link text-success-emphasis" asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index">
+                                <a class="nav-link text-primary asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index">
                                     @await Component.InvokeAsync("ShoppingCart")
                                 </a>
                             </li>
@@ -76,12 +78,46 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-success-subtle">
-        <div class="container text-center text-success-emphasis ">
-            Sias Garden <i class="bi bi-flower1"></i>
+    <footer class="border-top footer text-muted bg-success-subtle mt-1  ">
+        <div class="container  text-primary mt-0 p-1">
+            <div class="row" >
+                    <div class="col-md-4 d-flex align-items-lg-center">
+                        <img src="/images/SiasGarden3.png"" style="width:150px" />
+                    </div>
+                   
+                    <div class="col-md-4 p-1">
+                       
+                         <h6 class="lh-1">Kontakt</h6>
+                         <p class="lh-1 small">
+                             Sias Örtagård
+                         </p >
+                         <p class="lh-1 small">
+                             Adress: Ängsbacka 312, 283 87 Moberga
+                         </p>
+                        <p class="lh-1 small">
+                            Adress:Telefon: 073 125412
+                         </p>
+                        <p class="lh-1 small">
+                            Adress: Email: info@sias.se
+                         </p>
+
+                    </div>
+                
+                    <div class="col-md-4" p-1>
+                        <h6 class="lh-1 small">Öppettider</h6>
+
+                        <p class="lh-1 small">Måndag - Fredag: 10:00 - 18:00</p>
+                        <p class="lh-1 small">Lördag & Söndag: 10:00 - 15:00</p>
+                      
+                    </div>
+           </div>
+       
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"asp-append-version="true"></script>

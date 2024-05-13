@@ -29,10 +29,7 @@ internal class ProductRepository : Repository<Product>, IProductRepository
         
             productFromDb.LatinName= product.LatinName;
             productFromDb.CategoryId= product.CategoryId;
-            if(product.StartImageUrl!=null)
-            {
-                productFromDb.StartImageUrl= product.StartImageUrl;
-            }
+            productFromDb.ProductImages= product.ProductImages;
         }
 
     }

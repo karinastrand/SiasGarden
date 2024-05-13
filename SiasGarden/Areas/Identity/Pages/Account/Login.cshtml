@@ -1,9 +1,9 @@
 ﻿@page
 @model LoginModel
 
-<h1 class="text-success-emphasis">@ViewData["Title"]</h1>
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-success bg-gradient ml-0 py-4">
+<h1 class="text-primary">@ViewData["Title"]</h1>
+<div class="card shadow border-0 mt-4 mb-4">
+    <div class="card-header bg-success bg-gradient ml-0 py-4 rounded">
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="py-2 text-white">Logga in</h2>
@@ -26,17 +26,19 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <label asp-for="Input.Password" class="form-label">Lösenord</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
                         <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        Kom ihåg mig
+                       @*  @Html.DisplayNameFor(m => m.Input.RememberMe) *@
+                        
                     </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-success">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-success rounded">Logga in</button>
                 </div>
                 <div class="d-flex justify-content-between pt-2">
                     <p>
@@ -52,7 +54,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-12 p-3 text-center"
+    <div class="col-md-12 p-3 text-center mb-3"
             <section>
                 <p class="divider-text d-flex">eller</p>
               
@@ -74,7 +76,7 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins!)
                                 {
-                                    <button type="submit" class="btn btn-success" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-success rounded" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>

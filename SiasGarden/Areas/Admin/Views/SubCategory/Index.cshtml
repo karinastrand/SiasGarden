@@ -2,10 +2,10 @@
 
 <div class="card shadow border-0 mt-4">
 
-    <div class=" card-header bg-success-subtle bg-gradient ml-0 py-3">
+    <div class=" card-header bg-success bg-gradient ml-0 py-3 rounded">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-success-emphasis py-2">Underkategorier</h2>
+                <h2 class="text-white py-2">Underkategorier</h2>
             </div>
         </div>
     </div>
@@ -44,10 +44,10 @@
                         <td class="text-success-emphasis">@item.Description</td>
                         <td>
                             <div class="w-75 btn-group" role=" group">
-                                <a asp-controller="SubCategory" asp-action="Upsert" asp-route-id="@item.Id" class="btn btn-success mx-2">
+                                <a asp-controller="SubCategory" asp-action="Upsert" asp-route-id="@item.Id" class="btn btn-success mx-2 rounded">
                                     <i class="bi bi-pencil-square"></i> Redigera
                                 </a>
-                                <a asp-controller="SubCategory" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2">
+                                <a asp-controller="SubCategory" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2 rounded">
                                     <i class="bi bi-trash-fill"></i> Ta bort
                                 </a>
                             </div>

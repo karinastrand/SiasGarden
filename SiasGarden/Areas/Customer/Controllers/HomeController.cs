@@ -22,12 +22,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category,SubCategory");
+        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category,SubCategory,ProductImages");
         return View(productList);
     }
     public IActionResult Details(int productId)
     {
-        Product product=_unitOfWork.Product.Get(u=>u.Id == productId, includeProperties:"Category,SubCategory");
+        Product product=_unitOfWork.Product.Get(u=>u.Id == productId, includeProperties:"Category,SubCategory,ProductImages");
         ShoppingCart shoppingCart = new ShoppingCart()
         {
             Product = product,

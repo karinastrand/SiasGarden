@@ -46,7 +46,7 @@ public class UserController : Controller
             RoleList = _roleManager.Roles.Select(u => new SelectListItem
             {
                 Text = u.Name,
-                Value = u.Id.ToString()
+                Value = u.Name
             }),
           
         };
@@ -71,11 +71,13 @@ public class UserController : Controller
             applicationUserFromDb.StreetAddress=userVM.ApplicationUser.StreetAddress;
            
             var oldUserRole=_userManager.GetRolesAsync(applicationUserFromDb).GetAwaiter().GetResult().FirstOrDefault();
-            var newUserRole = _roleManager.Roles.Where(u=>u.Id==userVM.ApplicationUser.Role).FirstOrDefault().ToString();
-            _userManager.RemoveFromRoleAsync(userVM.ApplicationUser,oldUserRole).GetAwaiter().GetResult();
-            _userManager.AddToRoleAsync(userVM.ApplicationUser,newUserRole).GetAwaiter().GetResult();
-            
-           _unitOfWork.ApplicationUser.Update(applicationUserFromDb);
+            var newUserRole = _roleManager.Roles.FirstOrDefault(u => u.Name == userVM.ApplicationUser.Role).Name;
+            if(oldUserRole!=newUserRole)
+            { 
+                _userManager.RemoveFromRoleAsync(userVM.ApplicationUser,oldUserRole).GetAwaiter().GetResult();
+                _userManager.AddToRoleAsync(userVM.ApplicationUser,newUserRole).GetAwaiter().GetResult();
+            }
+            _unitOfWork.ApplicationUser.Update(applicationUserFromDb);
            _unitOfWork.Save();
             return RedirectToAction("Index");
         }
@@ -85,7 +87,7 @@ public class UserController : Controller
             userVM.RoleList = _roleManager.Roles.Select(u => new SelectListItem
             {
                 Text = u.Name,
-                Value = u.Id.ToString()
+                Value = u.Name
             });
             
             return View(userVM);

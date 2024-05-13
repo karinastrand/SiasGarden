@@ -32,7 +32,7 @@ function loadDataTable() {
                
                 "width": "20%"
             }
-    ]
+        ]
     });
 }
 
