@@ -34,7 +34,8 @@ function loadDataTable(status) {
         language: {
             search: "S\u00F6k:",
             lengthMenu: " _MENU_ per sida",
-            info: "Visar _START_ till _END_ av _TOTAL_ poster"
+            info: "Visar _START_ - _END_ av _TOTAL_ poster",
+            infoFiltered: "(filtrerat fr\u00E5n _MAX_ poster totalt)"
         },
         scrollY:400,
        "ajax": { url: '/admin/order/getall?status=' + status },

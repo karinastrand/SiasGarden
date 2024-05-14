@@ -22,13 +22,13 @@ internal class ProductRepository : Repository<Product>, IProductRepository
         if(productFromDb != null) 
         {
             productFromDb.Name = product.Name;
+            productFromDb.LatinName = product.LatinName;
             productFromDb.Description = product.Description;
             productFromDb.Price = product.Price;
-            productFromDb.ZoneFrom= product.ZoneFrom;
+            productFromDb.Light = product.Light;
+            productFromDb.Height = product.Height;
             productFromDb.ZoneTo= product.ZoneTo;
-        
-            productFromDb.LatinName= product.LatinName;
-            productFromDb.CategoryId= product.CategoryId;
+            productFromDb.SubCategoryId= product.SubCategoryId;
             productFromDb.ProductImages= product.ProductImages;
         }
 

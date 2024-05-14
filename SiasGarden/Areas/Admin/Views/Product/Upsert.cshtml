@@ -1,10 +1,10 @@
 ﻿@model ProductVM
 
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-success-subtle bg-gradient m-lg-0 py-2">
+<div class="card shadow border-0 mt-4 mb-4">
+    <div class="card-header bg-success bg-gradient m-lg-0 py-2 rounded">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-success-emphasis">@(Model.Product.Id!=0?"Redigera":"Ny") Produkt</h2>
+                <h2 class="text-white">@(Model.Product.Id!=0?"Redigera":"Ny") Produkt</h2>
             </div>
         </div>
     </div>
@@ -28,11 +28,15 @@
                         </div>
 
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Product.ZoneFrom" class="form-control border-1 " />
-                            <label asp-for="Product.ZoneFrom" class="mt-2 text-muted "></label>
-                            <span asp-validation-for="Product.ZoneFrom" class="text-danger"></span>
+                            <input asp-for="Product.Light" class="form-control border-1 " />
+                            <label asp-for="Product.Light" class="mt-2 text-muted "></label>
+                            <span asp-validation-for="Product.Light" class="text-danger"></span>
                         </div>
-
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Product.Height" class="form-control border-1 " />
+                            <label asp-for="Product.Height" class="mt-2 text-muted "></label>
+                            <span asp-validation-for="Product.Height" class="text-danger"></span>
+                        </div>
                         <div class="form-floating py-2 col-12">
                             <input asp-for="Product.ZoneTo" class="form-control border-1 " />
                             <label asp-for="Product.ZoneTo" class="mt-2 "></label>
@@ -54,13 +58,7 @@
                             <input type="file" name="files" class="form-control border-1" multiple />
                             <label asp-for="Product.ProductImages" class="mt-2 "></label>
                         </div>
-                        <div class="form-floating py-2 col-12">
-                            <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select border-1">
-                                <option disabled selected>--Select Category--</option>
-                            </select>
-                            <label asp-for="Product.CategoryId" class="mt-2 "></label>
-                            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
-                        </div>
+                       
                         <div class="form-floating py-2 col-12">
                             <select asp-for="Product.SubCategoryId" asp-items="@Model.SubCategoryList" class="form-select border-1">
                                 <option disabled selected>--Select Category--</option>
@@ -72,17 +70,17 @@
                             <div class="col-6 col-md-3">
                                 @if (Model.Product.Id == 0)
                                 {
-                                    <button type="submit" class="btn btn-success form-control">Spara</button>
+                                    <button type="submit" class="btn btn-success form-control rounded">Spara</button>
                                 }
                                 else
                                 {
-                                    <button type="submit" class="btn btn-success form-control">Uppdatera</button>
+                                    <button type="submit" class="btn btn-success form-control rounded">Uppdatera</button>
                                 }
 
 
                             </div>
                             <div class="col-6 col-md-3">
-                                <a asp-controller="Product" asp-action="Index" class="btn btn-info form-control">Tillbaka till listan</a>
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-primary rounded form-control">Tillbaka till listan</a>
 
                             </div>
                         </div>
@@ -93,10 +91,10 @@
                     @if(Model.Product.ProductImages !=null)
                     @foreach (var image in Model.Product.ProductImages)
                     {
-                         <div ckass="border p-1 m-2 text.center">
+                         <div class="border p-1 m-2 text.center ">
                                 <img src="@image.ImageUrl" width="100%"
                                      style="border-radius:5px; border:1px solid #bbb9b9" />
-                                <a asp-action="DeleteImage" class="btn btn-danger" asp-route-imageId="@image.Id">
+                                <a asp-action="DeleteImage" class="btn btn-danger rounded m-1" asp-route-imageId="@image.Id">
                                     <i class="bi bi-trash-fill"></i>Delete
                                 </a>
                         </div>

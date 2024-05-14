@@ -2,6 +2,10 @@
 using SiasGarden.Models;
 using SiasGarden.DataAccess.Data;
 using SiasGarden.DataAccess.Repository.IRepository;
+using SiasGarden.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
+using System.Collections;
 
 namespace SiasGarden.Areas.Admin.Controllers;
 [Area("Admin")]
@@ -14,22 +18,34 @@ public class SubCategoryController : Controller
     }
     public IActionResult Index()
     {
-        List<SubCategory> SubCategoryList = _unitOfWork.SubCategory.GetAll().ToList();
+        IEnumerable<SubCategory> SubCategoryList = _unitOfWork.SubCategory.GetAll(includeProperties:"Category");
         return View(SubCategoryList);
     }
     
     public IActionResult Upsert(int? id)
     {
-        SubCategory subCategoryFromDb=new SubCategory();
-        if(id != null) 
-        {
-             subCategoryFromDb = _unitOfWork.SubCategory.Get(c => c.Id == id);
-        }
 
-        return View(subCategoryFromDb);
+        SubCategoryVM subCategoryVM = new()
+        {
+
+            CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            }),
+            SubCategory = new SubCategory()
+        };
+        if(id != null|| id>0) 
+        {
+            subCategoryVM.SubCategory = _unitOfWork.SubCategory.Get(c => c.Id == id, includeProperties: "Category");
+          
+        }
+       
+        return View(subCategoryVM);
+       
     }
     [HttpPost]
-    public IActionResult Edit(SubCategory subCategory)
+    public IActionResult Upsert(SubCategory subCategory)
     {
         if (ModelState.IsValid)
         {
@@ -39,39 +55,28 @@ public class SubCategoryController : Controller
             return RedirectToAction("Index");
         }
         return View();
+    }
 
+    #region APICALLS
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        IEnumerable<SubCategory> subCategoryList = _unitOfWork.SubCategory.GetAll(includeProperties:"Category");
+        return Json(new { data = subCategoryList });
     }
     public IActionResult Delete(int? id)
     {
-        if (id == null || id == 0)
+        var subCategory = _unitOfWork.SubCategory.Get(u => u.Id == id);
+        if (subCategory == null)
         {
-            return NotFound();
+            return Json(new { success = false, message = "Fel vid borttagning" });
         }
-        SubCategory? subCategoryFromDb = _unitOfWork.SubCategory.Get(c => c.Id == id);
-        if (subCategoryFromDb == null)
-        {
-            return NotFound();
-        }
-        return View(subCategoryFromDb);
-    }
-    [HttpPost, ActionName("Delete")]
-    public IActionResult DeletePost(int? id)
-    {
-        if (ModelState.IsValid)
-        {
-            SubCategory subCategory = _unitOfWork.SubCategory.Get(c => c.Id == id);
-            if (subCategory == null)
-            {
-                return NotFound();
-            }
-            _unitOfWork.SubCategory.Remove(subCategory);
-
-            _unitOfWork.Save();
-            TempData["success"] = "Kategorin togs bort";
-            return RedirectToAction("Index");
-        }
-        return View();
+        _unitOfWork.SubCategory.Remove(subCategory);
+        _unitOfWork.Save();
+        return Json(new { success = true, message = "Underkategorin har tagits bort" });
 
     }
+    #endregion
 }
 

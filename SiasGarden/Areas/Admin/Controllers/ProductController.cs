@@ -25,9 +25,9 @@ public class ProductController : Controller
     }
     public IActionResult Index()
     {
-        List<Product> ProductList = _unitOfWork.Product.GetAll(includeProperties:"Category,SubCategory").ToList();
-        
-        return View(ProductList);
+        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "SubCategory,ProductImages");
+
+        return View(productList);
     }
     public IActionResult Upsert(int? id)
     {
@@ -36,11 +36,7 @@ public class ProductController : Controller
         ProductVM productVM = new ProductVM()
         {
             Product=new Product(),
-            CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            }),
+          
             SubCategoryList = _unitOfWork.SubCategory.GetAll().Select(u => new SelectListItem
             {
                 Text = u.Name,
@@ -49,7 +45,7 @@ public class ProductController : Controller
         };
         if (id != null && id > 0)
         {
-            productVM.Product = _unitOfWork.Product.Get(u => u.Id == id,includeProperties:"ProductImages");
+            productVM.Product = _unitOfWork.Product.Get(u => u.Id == id,includeProperties:"ProductImages,SubCategory");
        
         }
     
@@ -114,11 +110,6 @@ public class ProductController : Controller
         else
         {
 
-            productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
             productVM.SubCategoryList = _unitOfWork.SubCategory.GetAll().Select(u => new SelectListItem
             {
                 Text = u.Name,
@@ -154,7 +145,7 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult GetAll()
     {
-        List<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,SubCategory").ToList();
+        IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "SubCategory");
         return Json(new { data = productList });
     }
   

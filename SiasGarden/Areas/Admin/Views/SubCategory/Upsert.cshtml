@@ -1,31 +1,33 @@
-﻿@model SubCategory
+﻿@model SubCategoryVM
 
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-success-subtle bg-gradient m-lg-0 py-2">
+<div class="card shadow border-0 mt-4 mb-4">
+    <div class="card-header bg-success- bg-gradient m-lg-0 py-2 rounded">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-success-emphasis">@(Model.Id!=0?"Redigera underkategori":"Ny underkategori")</h2>
+                <h2 class="text-white">@(Model.SubCategory.Id!=0?"Redigera underkategori":"Ny underkategori")</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         <form method="post" class="row">
             <div class="border p-3">
-                <input asp-for="Id" type="hidden" />
+                <input asp-for="@Model.SubCategory.Id" type="hidden" />
                 <div class="form-floating py-2 col-12">
 
-                    <input asp-for="Name" class="form-control border-1 " />
-                    <label asp-for="Name" class="mt-2 "></label>
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="@Model.SubCategory.Name" class="form-control border-1 " />
+                    <label asp-for="@Model.SubCategory.Name" class="mt-2 "></label>
+                    <span asp-validation-for="@Model.SubCategory.Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Description" class="form-control border-1" />
-                    <label asp-for="Description" class="mt-2 "></label>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <select asp-for="@Model.SubCategory.CategoryId" asp-items="@(Model.CategoryList)" class="form-select border-0 shadow">
+                        <option disabled selected>--Välj kategori--</option>
+                    </select>
+                    <label asp-for="@Model.SubCategory.Category" class="mt-2">Kategori</label>
+                    <span asp-validation-for="@Model.SubCategory.CategoryId" class="text-danger"></span>
                 </div>
                
                 <div class="row mt-3">
-                    @if(Model.Id!=0)
+                    @if(Model.SubCategory.Id!=0)
                     {
                         <div class="col-6 col-md-3">
                             <button type="submit" class="btn btn-success form-control">Uppdatera</button>
@@ -35,12 +37,12 @@
                     else
                     {
                     <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-success form-control">Spara</button>
+                        <button type="submit" class="btn btn-success form-control rounded">Spara</button>
 
                     </div>
                     }
                     <div class="col-6 col-md-3">
-                        <a asp-controller="SubCategory" asp-action="Index" class="btn btn-info form-control">Tillbaka till listan</a>
+                        <a asp-controller="SubCategory" asp-action="Index" class="btn btn-primary form-control rounded">Tillbaka till listan</a>
 
                     </div>
                 </div>

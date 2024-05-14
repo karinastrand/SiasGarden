@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="card shadow border-0">
 
-			<div class="card-header bg-success bg-gradient text-light ml-0 py-4">
+			<div class="card-header bg-success bg-gradient text-light ml-0 py-4 rounded">
 				<div class="row px-4">
 					<div class="col-6">
 						<h5 class="pt-2 text-white">
@@ -12,7 +12,7 @@
 						</h5>
 					</div>
 					<div class="col-6 text-end">
-						<a asp-action="Index" class="btn btn-outline-info  text-white btn-sm">Tillbaka till kundvagnen</a>
+						<a asp-action="Index" class="btn btn-outline-primary rounded text-white btn-sm">Tillbaka till kundvagnen</a>
 					</div>
 				</div>
 			</div>
@@ -110,14 +110,14 @@
 			<div class="card-footer">
 				<div class="row">
 					<div class="col-12 col-md-8 pt-2">
-						<p class="text-info" style="font-size:14px;">
+						<p class="text-primary" style="font-size:14px;">
 							Beräknat leveransdatum:
 							@DateTime.Now.AddDays(3).ToShortDateString() - @DateTime.Now.AddDays(10).ToShortDateString()
 
 						</p>
 					</div>
 					<div class="col-12 col-md-4">
-						<button type="submit" value="Place Order" class="btn btn-success form-control">Beställ</button>
+						<button type="submit" value="Place Order" class="btn btn-success form-control rounded">Beställ</button>
 					</div>
 				</div>
 			</div>

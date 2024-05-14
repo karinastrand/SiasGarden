@@ -172,35 +172,54 @@ public class ShoppingCartController : Controller
         cartFromDb.Count += 1;
         _unitOfWork.ShoppingCart.Update(cartFromDb);
         _unitOfWork.Save();
+        var CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId);
+        int numberOfProductsInCart = 0;
+        foreach (var cart in CartList)
+        {
+            numberOfProductsInCart += cart.Count;
+        }
+        HttpContext.Session.SetInt32(SD.SessionCart, numberOfProductsInCart);
         return RedirectToAction("Index");
     }
 
     public IActionResult Minus(int cartId)
     {
         var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true);
-        if(cartFromDb.Count >1)
+        string userId = cartFromDb.ApplicationUserId;
+        if (cartFromDb.Count >1)
         { 
-            cartFromDb.Count -= 1;
+            cartFromDb.Count -= 1;     
             _unitOfWork.ShoppingCart.Update(cartFromDb);
-           
         }
         else
         {
-            HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
-
-            _unitOfWork.ShoppingCart.Remove(cartFromDb);
+           _unitOfWork.ShoppingCart.Remove(cartFromDb);   
         }
-        _unitOfWork.Save();
+        _unitOfWork.Save(); 
+        var CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId);
+        int numberOfProductsInCart = 0;
+        foreach (var cart in CartList)
+        {
+            numberOfProductsInCart += cart.Count;
+        }
+        HttpContext.Session.SetInt32(SD.SessionCart, numberOfProductsInCart);
         return RedirectToAction("Index");
     }
     public IActionResult Remove(int cartId)
     {
         var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true) ;
-        HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
-
+        string userId = cartFromDb.ApplicationUserId;
         _unitOfWork.ShoppingCart.Remove(cartFromDb);
 
         _unitOfWork.Save();
+        int numberOfProductsInCart = 0;
+        var CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId);
+        foreach (var cart in CartList)
+        {
+            numberOfProductsInCart += cart.Count;
+        }
+        HttpContext.Session.SetInt32(SD.SessionCart, numberOfProductsInCart);
+    
         return RedirectToAction("Index");
     }
 

@@ -245,13 +245,6 @@ namespace SiasGarden.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -265,50 +258,27 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            DisplayOrder = 1,
                             Name = "Rosor"
                         },
                         new
                         {
                             Id = 2,
-                            DisplayOrder = 2,
                             Name = "Perenner"
                         },
                         new
                         {
                             Id = 3,
-                            DisplayOrder = 3,
-                            Name = "Ettåriga"
+                            Name = "Klängväxter"
                         },
                         new
                         {
                             Id = 4,
-                            DisplayOrder = 4,
-                            Name = "Rhododendron"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DisplayOrder = 5,
-                            Name = "Hortensia"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DisplayOrder = 6,
                             Name = "Buskar"
                         },
                         new
                         {
-                            Id = 7,
-                            DisplayOrder = 7,
+                            Id = 5,
                             Name = "Träd"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            DisplayOrder = 8,
-                            Name = "Ormbunkar"
                         });
                 });
 
@@ -422,9 +392,6 @@ namespace SiasGarden.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -445,27 +412,13 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("Size")
-                        .HasColumnType("int");
-
                     b.Property<int>("SubCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ZoneFrom")
                         .HasColumnType("int");
 
                     b.Property<int>("ZoneTo")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("SubCategoryId");
 
@@ -475,129 +428,247 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
-                            Description = "Sensationell storblommig ratbttros med stora, fyllda, svagt doftande gräddvita blommor med körsbärsröda kanter. Blommar från juni till oktober. Trivs i sol-halvskugga i väldränerad, näringsrik jord",
-                            Height = 0,
-                            LatinName = "Rosa Taneiglat",
-                            Name = "Nostalgi",
-                            Price = 699.0,
-                            Size = 0,
-                            SubCategoryId = 3,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Description = "Blommar rikligt med mörkt blåviolett blommor och har ett kompakt, lågväxande växtsätt. Utvecklas bäst i full sol på väldränerad jord. En av de härdigaste sorterna.",
+                            Height = 60,
+                            LatinName = "Lavendula augustifolia 'Hidcote'",
+                            Light = "Sol",
+                            Name = "Lavendel 'Hidcote'",
+                            Price = 59.0,
+                            SubCategoryId = 1,
+                            ZoneTo = 5
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 1,
-                            Description = "Otroligt vacker ros med buskigt växtsätt. Remonterar från sommar till höst med fylllda gula blommor och röda anstrykningar på yttre kronbladen. Friskt sort. Trovs soligt i väldränerad, näringsrik jord.",
-                            Height = 0,
-                            LatinName = "Rose Lampion",
-                            Name = "Lampion",
-                            Price = 999.0,
-                            Size = 0,
-                            SubCategoryId = 3,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Description = "Blomvillig och lättskött perenn för soliga lägen med djupt, mörklila blomax på purpurfärgade stjälkar. Blommar rikligt och länge.",
+                            Height = 60,
+                            LatinName = "Salvia nemorosa 'Caradonna'",
+                            Light = "Sol",
+                            Name = "Stäppsalvia 'Caradonna'",
+                            Price = 49.0,
+                            SubCategoryId = 1,
+                            ZoneTo = 3
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 2,
                             Description = "Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
-                            Height = 0,
-                            LatinName = "Lamprocapnos specabilis Valentine",
-                            Name = "Löjtnatshjärta Valentine",
+                            Height = 40,
+                            LatinName = "Lamprocapnos specabilis 'Valentine'",
+                            Light = "Sol till halvskugga",
+                            Name = "Löjtnatshjärta Valentine 'Hordival'",
                             Price = 199.0,
-                            Size = 0,
-                            SubCategoryId = 6,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            SubCategoryId = 2,
+                            ZoneTo = 3
                         },
                         new
                         {
                             Id = 4,
-                            CategoryId = 2,
-                            Description = "Vacker lättodlad perenn med hjärformade blommor i rosa och vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
-                            Height = 0,
-                            LatinName = "Lamprocapnos specabilis",
-                            Name = "Löjtnadshjärta",
-                            Price = 179.0,
-                            Size = 0,
-                            SubCategoryId = 6,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Description = "Vacker, lättodlad perenn med hjärtformade blommor i vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge. för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
+                            Height = 40,
+                            LatinName = "Lamprocapnos spectabilis 'Alba'",
+                            Light = "Sol till halvskugga",
+                            Name = "Löjtnadshjärta 'Alba'",
+                            Price = 84.0,
+                            SubCategoryId = 2,
+                            ZoneTo = 9
                         },
                         new
                         {
                             Id = 5,
-                            CategoryId = 1,
                             Description = "Klasblommig ros med kompakt växtsätt. Remonterar från sommar till höst med fyllda aprikosgula blommor. Medelstark doft. Frisk sort. Trivs i sol-halvskugga i väldränerad näringsrik jord.",
-                            Height = 0,
+                            Height = 80,
+                            Light = "Sol till halvskugga",
                             Name = "Hansestadt Rostock",
-                            Price = 699.0,
-                            Size = 0,
-                            SubCategoryId = 3,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Price = 289.0,
+                            SubCategoryId = 4,
+                            ZoneTo = 4
                         },
                         new
                         {
                             Id = 6,
-                            CategoryId = 2,
-                            Description = "Mattbildande låg timjan som med sitt kompakta växtsätt av små gröna blad och rik blomning i rödviolett blir perfekt marktäckare i stenparti eller som kantväxt. Trivs soligt i väldränerad, mager jord.",
-                            Height = 0,
-                            LatinName = "Thymus Coccineus",
-                            Name = "Purpurtimjan",
-                            Price = 59.899999999999999,
-                            Size = 0,
-                            SubCategoryId = 1,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Description = "Sensationell storblommig rabattros med stora, fyllda, svagt doftande gräddvita blommor med körsbärsröda kanter. Blommar från juni till oktober. Trivs i sol-halvskugga i väldränerad, näringsrik jord.",
+                            Height = 70,
+                            Light = "Sol",
+                            Name = "Nostalgi",
+                            Price = 299.0,
+                            SubCategoryId = 4,
+                            ZoneTo = 4
                         },
                         new
                         {
                             Id = 7,
-                            CategoryId = 5,
-                            Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
-                            Height = 0,
-                            LatinName = "Hudrangea panicilata Sundae fraise",
-                            Name = "Sundaw fraise",
-                            Price = 699.0,
-                            Size = 0,
-                            SubCategoryId = 10,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            Description = "Buskros med upprätt och tätt växtsätt. Bladverket är läderartat, mörkgrönt och glänsande. Blommar med tätt fyllda, mörkt sammetsröda blommor som har en medelstark doft. Riklig blomning nästan oavbrutet från juni och in på senhösten. Mycket användbar då den kan planteras i grupper, tillsammans med perenner, som kantväxt och häckväxt, blir även fin i kruka. Trivs bäst i soliga lägen i näringsrik jord.",
+                            Height = 150,
+                            Light = "Sol",
+                            Name = "Isabel Renaissance",
+                            Price = 345.0,
+                            SubCategoryId = 3,
+                            ZoneTo = 3
                         },
                         new
                         {
                             Id = 8,
-                            CategoryId = 5,
-                            Description = "Buske med vackra konformade blomklasar som ändrar färg från vitt till rosa när de åldras. Trivs i sol-halvskugga i näringsrik, väldränderad och fuktighetshållande jord.",
-                            Height = 0,
-                            LatinName = "Hudrangea panicilata Living Pink & Rose",
-                            Name = "Living Pink & Rose",
-                            Price = 349.0,
-                            Size = 0,
+                            Description = "Buskros med ett kraftigt, buskigt växtsätt. Bladverket är friskt, grönt där all nytillväxt är vackert röd. Praktfull blomning med klasar av gula, fyllda blommor som ljusnar under blomningen till en härlig svavelgul nyans. Doftar angenämt och tål regn bra. Är en frisk ros som är motståndskraftig mot olika svampsjukdomar",
+                            Height = 100,
+                            Light = "Sol",
+                            Name = "Hugh Voltage",
+                            Price = 345.0,
+                            SubCategoryId = 3,
+                            ZoneTo = 5
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Vacker hybrid som blommar länge från sommar till tidig höst med sammetsröda blommor mot mörkgrönt bladverk. Trivs i sol–halvskugga i fukthållande, väldränerad jord. Beskärningsgrupp 2.",
+                            Height = 200,
+                            Light = "Sol-halvskugga",
+                            Name = "Clematis Hisako",
+                            Price = 350.0,
+                            SubCategoryId = 5,
+                            ZoneTo = 6
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Storblommig klematis med läckert körsbärsröda blommor. Blommar under en lång tid. Blomrik och tålig. För soliga till halvskuggiga lägen. Beskärningsgrupp 3.",
+                            Height = 400,
+                            Light = "Sol-halvskugga",
+                            Name = "Clematis 'Ville de Lyon'",
+                            Price = 199.0,
+                            SubCategoryId = 5,
+                            ZoneTo = 5
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Description = "Lonicera heckrottii 'Goldflame' är en lättodlad och vacker kaprifol. Sorten är kraftfull och snabbväxande. Blommar med rörformiga, rosa/rödrosa blommor under juni - augusti. På hösten kommer dekorativa oätliga röda bär. Bladen är ovala, medelstora, blågröna och ger fin gul höstfärg. Doften är frisk, intensivt och fantastisk. Sorten är mycket tålig och ger riklig blomning på en solig plats. Älskas av fjärilar, bin och humlor",
+                            Height = 350,
+                            LatinName = "Lonicera heckrottii 'Goldflame'",
+                            Light = "Sol-halvskugga",
+                            Name = "Kaprifol 'Goldflame'",
+                            Price = 28.0,
+                            SubCategoryId = 6,
+                            ZoneTo = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Description = "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande, brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.",
+                            Height = 450,
+                            LatinName = "Lonicera x tellmanniana'",
+                            Light = "Sol-halvskugga",
+                            Name = "Tellmannskaprifol",
+                            Price = 199.0,
+                            SubCategoryId = 6,
+                            ZoneTo = 4
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Description = "Elegant, storblommig sort med buskigt, upprätt växtsätt. Blommar länge med gräddvita, fylliga klasar som skiftar till mörkrosa och avslutas i mörkrosa nyanser. Trivs i sol till halvskugga på mullrik, lätt kemiskt sur jord.",
+                            Height = 250,
+                            LatinName = "Hydrangea paniculata 'Vanille-Fraise'",
+                            Light = "Sol-halvskugga",
+                            Name = "Vipphortensia 'Vanille-Fraise'",
+                            Price = 299.0,
+                            SubCategoryId = 7,
+                            ZoneTo = 5
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Description = "Syrenbuddleja kallas även för fjärilsbuske, då den är känd för att locka till sig fjärilar. Fungerar att planteras både som solitär och i grupp. Anses vara mindre smaklig för rådjur.",
+                            Height = 199,
+                            LatinName = "Buddleja davidii 'Royal Red'",
+                            Name = "Syrenbuddleja 'Royal Red'",
+                            Price = 340.0,
+                            SubCategoryId = 7,
+                            ZoneTo = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Description = "Kraftig med lätt överhängande grenar och rik skörd av svarta bär i rejäla klasar. Härdig och motståndskraftig mot mjöldagg. Trivs i sol-halvskugga i väldränerad, näringsrik, fuktighetshållande jord.",
+                            Height = 150,
+                            LatinName = "Ribes nigrum 'Öjebyn'",
+                            Light = "Sol-halvskugga",
+                            Name = "Svarta vinbär 'Öjebyn'",
+                            Price = 149.0,
+                            SubCategoryId = 8,
+                            ZoneTo = 6
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Description = "Frodig slingerväxt som får gräddvita, doftande blommor och små äggformade, bruna frukter med hårigt skal och grönt, sötsyrligt fruktkött. Självfertil men gynnas av samplantering med hanplanta. Ger bäst skörd på en varm solig och skyddad plats, gärna i växthus.",
+                            Height = 400,
+                            LatinName = "Actinidia deliciosa 'Jenny'",
+                            Light = "Sol",
+                            Name = "Kivi 'Jenny'",
+                            Price = 379.0,
+                            SubCategoryId = 8,
+                            ZoneTo = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Description = "Medelstarkväxande, populär sort som ger gulgröna äpplen med röd solsida. Har ett fint, fast fruktkött med en sötsyrlig smak. Frisk sort. Kan lagras fram till jul. Pollineras av bl. a 'Alice' och 'Ingrid Marie'. Bäst skörd i soligt läge.",
+                            Height = 500,
+                            LatinName = "Malus domestica 'Aroma'",
+                            Light = "Sol-halvskugga",
+                            Name = "Aroma",
+                            Price = 520.0,
+                            SubCategoryId = 9,
+                            ZoneTo = 4
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Description = "Svagväxande, populär sort som får stora, medeltidiga skördar med stora, rödgula frukter med ljusviolett daggig yta. Fast fruktkött med söt smak. Självfertil. Ger bäst skörd i soligt läge på väldränerad och näringsrik jord.",
+                            Height = 450,
+                            LatinName = "Prunus domestica 'Victoria'",
+                            Light = "Sol-halvskugga",
+                            Name = "Victoria",
+                            Price = 799.0,
+                            SubCategoryId = 9,
+                            ZoneTo = 3
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Description = "Odlingsvärt litet träd med tät, rundad krona. Vackert ljusgrönt bladverk med vitbrokiga skott som har rosatonad anstrykning på nytillväxten. Trivs i skyddat, soligt läge på väldränerad, näringsrik jord.",
+                            Height = 250,
+                            LatinName = "Salix integra 'Hakuro-nishiki'",
+                            Light = "Sol",
+                            Name = "Eukalyptusvide 'Hakuro-nishiki'",
+                            Price = 799.0,
                             SubCategoryId = 10,
-                            Weight = 0.0,
-                            Width = 0,
-                            ZoneFrom = 0,
-                            ZoneTo = 0
+                            ZoneTo = 2
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Description = "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande, brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.",
+                            Height = 450,
+                            LatinName = "Salix caprea 'Kilmarnock'",
+                            Light = "Sol",
+                            Name = "Hängsälg 'Kilmarnock'",
+                            Price = 100.0,
+                            SubCategoryId = 10,
+                            ZoneTo = 6
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Description = "Med det nätta formatet och det hängande växtsättet passar hängsälgen i kruka väldigt fint men också mitt i en större plantering för att skapa höjd. Fördelen med att den är uppstammad är att man kan plantera olika sommarblommor eller perenner under den. Samma sak när hängsälg står i rabatten, ett litet träd med videkissar blir perfekt med blommor nedanför.",
+                            Height = 120,
+                            LatinName = "Hydrangea paniculata 'Sundae-Fraise'",
+                            Light = "Sol-halvskugga",
+                            Name = "Vipphortensia 'Sundae-Fraise'",
+                            Price = 450.0,
+                            SubCategoryId = 7,
+                            ZoneTo = 3
                         });
                 });
 
@@ -658,8 +729,8 @@ namespace SiasGarden.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -667,63 +738,70 @@ namespace SiasGarden.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("SubCategories");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CategoryId = 1,
                             Name = "Kryddväxt"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Buskros"
+                            CategoryId = 1,
+                            Name = "Jordröksväxter"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Rabattros"
+                            CategoryId = 2,
+                            Name = "Buskrosor"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Azalea"
+                            CategoryId = 2,
+                            Name = "Rabattrosor"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Parkrhododendron"
+                            CategoryId = 3,
+                            Name = "Klematis"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Jordröksväxt"
+                            CategoryId = 3,
+                            Name = "Kaprifol"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Bärbuskar"
+                            CategoryId = 4,
+                            Name = "Prydnadsbuskar"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Fruktträd"
+                            CategoryId = 4,
+                            Name = "Bärbuskar"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Vidjehortensia"
+                            CategoryId = 5,
+                            Name = "Prydnadsträd"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Vipphortensia"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Klätterhortensia"
+                            CategoryId = 5,
+                            Name = "Fruktträd"
                         });
                 });
 
@@ -810,19 +888,11 @@ namespace SiasGarden.DataAccess.Migrations
 
             modelBuilder.Entity("SiasGarden.Models.Product", b =>
                 {
-                    b.HasOne("SiasGarden.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SiasGarden.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("SubCategory");
                 });
@@ -855,6 +925,17 @@ namespace SiasGarden.DataAccess.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SiasGarden.Models.SubCategory", b =>
+                {
+                    b.HasOne("SiasGarden.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("SiasGarden.Models.Product", b =>

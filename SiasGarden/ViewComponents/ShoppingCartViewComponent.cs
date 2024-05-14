@@ -22,7 +22,13 @@ public class ShoppingCartViewComponent : ViewComponent
         {
             if(HttpContext.Session.GetInt32(SD.SessionCart)==null)
             {
-                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId.Value).Count());
+                var CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId.Value);
+                int numberOfProductsInCart = 0;
+                foreach (var cart in CartList) 
+                {
+                    numberOfProductsInCart += cart.Count;
+                }
+                HttpContext.Session.SetInt32(SD.SessionCart, numberOfProductsInCart);
             }
       
             return View(HttpContext.Session.GetInt32(SD.SessionCart));

@@ -19,30 +19,17 @@ public class Product
     [Display(Name = "Pris")]
     [Range(0,5000)]
     public double Price { get; set; }
-    [Display(Name = "Ljus")]
+    [Display(Name = "Ljusbehov")]
     public string? Light {  get; set; }
-    [Display(Name = "Vikt")]
-    public double Weight { get; set; }
+   
     [Display(Name = "Höjd")]
     public int Height { get; set; }
-    [Display(Name = "Bredd")]
-    public int Width { get; set; }
-    [Display(Name = "Storlek")]
-    public int Size { get; set; }
+    
 
     [Display(Name= "Växtzon max")]
-    [Range(0,8)]
+    [Range(0,9)]
     public int ZoneTo { get; set; }
-    [Display(Name = "Växtzon min")]
-    [Range(0, 8)]
-    public int ZoneFrom { get; set; }
    
-   
-    public int CategoryId { get; set; }
-
-    [ForeignKey("CategoryId")]
-    [ValidateNever]
-    public Category Category { get; set; }
     public int SubCategoryId { get; set; }
 
     [ForeignKey("SubCategoryId")]

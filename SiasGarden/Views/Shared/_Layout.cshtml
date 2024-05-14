@@ -29,8 +29,12 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
+                       
                         <li class="nav-item">
                             <a class="nav-link text-primary" asp-area="Customer" asp-controller="Home" asp-action="Index">Start</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="Customer" asp-controller="Plant" asp-action="Index">Växter</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-primary" asp-area="Admin" asp-controller="Order" asp-action="Index">Hantera Order</a>
@@ -60,7 +64,7 @@
                         }
                     
                             <li class="nav-item">
-                                <a class="nav-link text-primary asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index">
+                                <a class="nav-link text-primary" asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index">
                                     @await Component.InvokeAsync("ShoppingCart")
                                 </a>
                             </li>
@@ -81,35 +85,42 @@
     <footer class="border-top footer text-muted bg-success-subtle mt-1  ">
         <div class="container  text-primary mt-0 p-1">
             <div class="row" >
-                    <div class="col-md-4 d-flex align-items-lg-center">
+                    <div class="col-md-3 d-flex align-items-lg-center">
                         <img src="/images/SiasGarden3.png"" style="width:150px" />
                     </div>
                    
-                    <div class="col-md-4 p-1">
+                    <div class="col-md-3 p-1">
                        
                          <h6 class="lh-1">Kontakt</h6>
+                       
                          <p class="lh-1 small">
-                             Sias Örtagård
-                         </p >
-                         <p class="lh-1 small">
-                             Adress: Ängsbacka 312, 283 87 Moberga
+                            Ängsbacka 312, 283 87 Moberga
                          </p>
                         <p class="lh-1 small">
-                            Adress:Telefon: 073 125412
+                            Telefon: 073 125412
                          </p>
                         <p class="lh-1 small">
-                            Adress: Email: info@sias.se
+                            Email: info@sias.se
                          </p>
 
                     </div>
                 
-                    <div class="col-md-4" p-1>
-                        <h6 class="lh-1 small">Öppettider</h6>
+                    <div class="col-md-3" p-1>
+                        <h6 class="lh-1 ">Öppettider</h6>
 
                         <p class="lh-1 small">Måndag - Fredag: 10:00 - 18:00</p>
                         <p class="lh-1 small">Lördag & Söndag: 10:00 - 15:00</p>
                       
                     </div>
+                <div class="col-md-3" p-1>
+                    <h6 class="lh-1 ">Adress</h6>
+
+                    <p class="lh-1 small">Sias Örtagård</p>
+                    <p class="lh-1 small">
+                        Ängsbacka 312, 283 87 Moberga
+                    </p>
+
+                </div>
            </div>
        
         </div>
