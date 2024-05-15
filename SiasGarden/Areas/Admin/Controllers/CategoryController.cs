@@ -60,36 +60,26 @@ public class CategoryController : Controller
         return View();
 
     }
+    
+    #region APICALLS
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        IEnumerable<Category> CategoryList = _unitOfWork.Category.GetAll();
+        return Json(new { data = CategoryList });
+    }
     public IActionResult Delete(int? id)
     {
-        if (id == null || id == 0)
+        var category = _unitOfWork.Category.Get(u => u.Id == id);
+        if (category == null)
         {
-            return NotFound();
+            return Json(new { success = false, message = "Fel vid borttagning" });
         }
-        Category? categoryFromDb = _unitOfWork.Category.Get(c => c.Id == id);
-        if (categoryFromDb == null)
-        {
-            return NotFound();
-        }
-        return View(categoryFromDb);
-    }
-    [HttpPost ,ActionName("Delete")]
-    public IActionResult DeletePost(int? id)
-    {
-        if (ModelState.IsValid)
-        {
-            Category category=_unitOfWork.Category.Get(c => c.Id==id);
-            if (category==null) 
-            {
-                return NotFound();
-            }
-            _unitOfWork.Category.Remove(category);
-         
-            _unitOfWork.Save();
-            TempData["success"] = "Kategorin togs bort";
-            return RedirectToAction("Index");
-        }
-        return View();
+        _unitOfWork.Category.Remove(category);
+        _unitOfWork.Save();
+        return Json(new { success = true, message = "Kategorin har tagits bort" });
 
     }
+    #endregion
 }

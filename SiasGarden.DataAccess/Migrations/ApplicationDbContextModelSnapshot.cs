@@ -456,7 +456,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 40,
                             LatinName = "Lamprocapnos specabilis 'Valentine'",
                             Light = "Sol till halvskugga",
-                            Name = "Löjtnatshjärta Valentine 'Hordival'",
+                            Name = "Löjtnatshjärta 'Valentine'",
                             Price = 199.0,
                             SubCategoryId = 2,
                             ZoneTo = 3
@@ -512,7 +512,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Buskros med ett kraftigt, buskigt växtsätt. Bladverket är friskt, grönt där all nytillväxt är vackert röd. Praktfull blomning med klasar av gula, fyllda blommor som ljusnar under blomningen till en härlig svavelgul nyans. Doftar angenämt och tål regn bra. Är en frisk ros som är motståndskraftig mot olika svampsjukdomar",
                             Height = 100,
                             Light = "Sol",
-                            Name = "Hugh Voltage",
+                            Name = "High Voltage",
                             Price = 345.0,
                             SubCategoryId = 3,
                             ZoneTo = 5
@@ -619,7 +619,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol-halvskugga",
                             Name = "Aroma",
                             Price = 520.0,
-                            SubCategoryId = 9,
+                            SubCategoryId = 10,
                             ZoneTo = 4
                         },
                         new
@@ -631,7 +631,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol-halvskugga",
                             Name = "Victoria",
                             Price = 799.0,
-                            SubCategoryId = 9,
+                            SubCategoryId = 10,
                             ZoneTo = 3
                         },
                         new
@@ -643,7 +643,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol",
                             Name = "Eukalyptusvide 'Hakuro-nishiki'",
                             Price = 799.0,
-                            SubCategoryId = 10,
+                            SubCategoryId = 9,
                             ZoneTo = 2
                         },
                         new
@@ -655,7 +655,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol",
                             Name = "Hängsälg 'Kilmarnock'",
                             Price = 100.0,
-                            SubCategoryId = 10,
+                            SubCategoryId = 9,
                             ZoneTo = 6
                         },
                         new
@@ -692,6 +692,134 @@ namespace SiasGarden.DataAccess.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageUrl = "\\images\\products\\product-1\\startbild.jpg",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageUrl = "\\images\\products\\product-2\\startbild.jpg.jpg",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ImageUrl = "\\images\\products\\product-3\\startbild.jpg",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ImageUrl = "\\images\\products\\product-4\\startbild.jpg",
+                            ProductId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ImageUrl = "\\images\\products\\product-5\\startbild.jpg",
+                            ProductId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ImageUrl = "\\images\\products\\product-6\\startbild.jpg",
+                            ProductId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ImageUrl = "\\images\\products\\product-7\\startbild.jpg",
+                            ProductId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ImageUrl = "\\images\\products\\product-8\\startbild.jpg",
+                            ProductId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ImageUrl = "\\images\\products\\product-9\\startbild.jpg",
+                            ProductId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ImageUrl = "\\images\\products\\product-10\\startbild.jpg",
+                            ProductId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ImageUrl = "\\images\\products\\product-11\\startbild.jpg",
+                            ProductId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ImageUrl = "\\images\\products\\product-12\\startbild.jpg",
+                            ProductId = 12
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ImageUrl = "\\images\\products\\product-13\\startbild.jpg",
+                            ProductId = 13
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ImageUrl = "\\images\\products\\product-14\\startbild.jpg",
+                            ProductId = 14
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ImageUrl = "\\images\\products\\product-15\\startbild.jpg",
+                            ProductId = 15
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ImageUrl = "\\images\\products\\product-16\\startbild.jpg",
+                            ProductId = 16
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ImageUrl = "\\images\\products\\product-17\\startbild.jpg",
+                            ProductId = 17
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ImageUrl = "\\images\\products\\product-18\\startbild.jpg",
+                            ProductId = 18
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ImageUrl = "\\images\\products\\product-19\\startbild.jpg",
+                            ProductId = 19
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ImageUrl = "\\images\\products\\product-20\\startbild.jpg",
+                            ProductId = 20
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ImageUrl = "\\images\\products\\product-21\\startbild.jpg",
+                            ProductId = 21
+                        });
                 });
 
             modelBuilder.Entity("SiasGarden.Models.ShoppingCart", b =>

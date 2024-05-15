@@ -1,4 +1,5 @@
 var dataTable
+var i = 27;
 
 $(document).ready(function () {
     loadDataTable();
@@ -15,17 +16,17 @@ function loadDataTable() {
             infoFiltered: "(filtrerat fr\u00E5n _MAX_ poster totalt)"
         },
         scrollY:450,
-        "ajax": { url: '/Admin/SubCategory/getall' },
+        "ajax": { url: '/Admin/Category/getall' },
 
         "columns": [
-            { data: 'name', "width": "30%" },
-            { data: 'category.name', "width": "30%" },
+            { data: 'name', "width": "70%" },
+        
             {
                 data: 'id',
                 "render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
-                     <a href="/admin/subcategory/upsert?id=${data}" class="btn btn-success mx-2 rounded"><i class="bi bi-pencil-square"></i>Redigera</a>
-                     <a onclick=Delete('/admin/subcategory/delete?id=${data}') class="btn btn-danger mx-2 rounded"><i class="bi bi-trash-fill"></i>Ta bort</a>
+                     <a href="/admin/category/upsert?id=${data}" class="btn btn-success mx-2 rounded"><i class="bi bi-pencil-square"></i>Redigera</a>
+                     <a onclick=Delete('/admin/category/delete?id=${data}') class="btn btn-danger mx-2 rounded"><i class="bi bi-trash-fill"></i>Ta bort</a>
                     </div>`
                 },
                

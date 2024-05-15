@@ -3,12 +3,12 @@
 @{
     ViewData["Title"] = "Registera";
 }
-
+<div class="mb-5">
 <h1>@ViewData["Title"]</h1>
 <h2 id="external-login-title">Koppla ditt @Model.ProviderDisplayName konto.</h2>
 <hr />
 
-<p id="external-login-description" class="text-info">
+<p id="external-login-description" class="text-primary">
     Du har autentifikerats med facebook. Ange email och adressuppgifter och klicka på Registreraknappen för att logga in
 
 </p>
@@ -52,11 +52,11 @@
                 <label asp-for="Input.City" class="form-label">Ort</label>
                 <span asp-validation-for="Input.City" class="text-danger"></span>
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-success">Registera</button>
+            <button type="submit" class="w-100 btn btn-lg btn-success mb-4 rounded">Registera</button>
         </form>
     </div>
 </div>
-
+</div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -61,25 +61,25 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             {
                 Id = 1,
                 Name = "Kryddväxt",
-                CategoryId=1
+                CategoryId=2
             },
             new SubCategory
             {
                 Id = 2,
                 Name = "Jordröksväxter",
-                CategoryId = 1
+                CategoryId = 2
             },
              new SubCategory
              {
                  Id = 3,
                  Name = "Buskrosor",
-                 CategoryId =2
+                 CategoryId =1
              },
             new SubCategory
             {
                 Id = 4,
                 Name = "Rabattrosor",
-                CategoryId = 2
+                CategoryId = 1
             },
             new SubCategory
             {
@@ -138,7 +138,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Product
             { 
                 Id = 2,
-                Name = "Stäppsalvia 'Caradonna'",
+                Name = "Stäppsalvia",
                 LatinName ="Salvia nemorosa 'Caradonna'",
                 Description= "Blomvillig och lättskött perenn för soliga lägen med djupt, mörklila blomax på purpurfärgade stjälkar. Blommar rikligt och länge.",
                 Price=49,
@@ -153,7 +153,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             {
                 Id = 3,
                 
-                Name = "Löjtnatshjärta 'Valentine'",
+                Name = "Valentine",
                 LatinName = "Lamprocapnos specabilis 'Valentine'",
                 Description ="Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning " +
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
@@ -226,7 +226,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Product
             {
                 Id = 8,
-                Name = "Hugh Voltage",
+                Name = "High Voltage",
                
                 Description = "Buskros med ett kraftigt, buskigt växtsätt. Bladverket är friskt, grönt där all nytillväxt är vackert röd. Praktfull blomning med klasar av gula, fyllda blommor som ljusnar under blomningen till en härlig svavelgul nyans. " +
                 "Doftar angenämt och tål regn bra. Är en frisk ros som är motståndskraftig mot olika svampsjukdomar",
@@ -294,7 +294,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 13,
-                  Name = "Vipphortensia 'Vanille-Fraise'",
+                  Name = "Vanille-Fraise",
                   LatinName = "Hydrangea paniculata 'Vanille-Fraise'",
                   Description = "Elegant, storblommig sort med buskigt, upprätt växtsätt. Blommar länge med gräddvita, fylliga klasar som skiftar till mörkrosa och avslutas i mörkrosa nyanser. Trivs i sol till halvskugga på mullrik, lätt kemiskt sur jord.",
                   Light = "Sol-halvskugga",
@@ -307,7 +307,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 14,
-                  Name = "Syrenbuddleja 'Royal Red'",
+                  Name = "Syrenbuddleja",
                   LatinName = "Buddleja davidii 'Royal Red'",
                   Description = "Syrenbuddleja kallas även för fjärilsbuske, då den är känd för att locka till sig fjärilar. Fungerar att planteras både som solitär " +
                   "och i grupp. Anses vara mindre smaklig för rådjur.",
@@ -376,7 +376,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                new Product
                {
                    Id = 19,
-                   Name = "Eukalyptusvide 'Hakuro-nishiki'",
+                   Name = "Eukalyptusvide",
                    LatinName = "Salix integra 'Hakuro-nishiki'",
                    Description = "Odlingsvärt litet träd med tät, rundad krona. Vackert ljusgrönt bladverk med " +
                    "vitbrokiga skott som har rosatonad anstrykning på nytillväxten. Trivs i skyddat, soligt läge på väldränerad, näringsrik jord.",
@@ -390,7 +390,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 20,
-                  Name = "Hängsälg 'Kilmarnock'",
+                  Name = "Hängsälg",
                   LatinName = "Salix caprea 'Kilmarnock'",
                   Description = "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande," +
                   " brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.",
@@ -404,7 +404,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 21,
-                  Name = "Vipphortensia 'Sundae-Fraise'",
+                  Name = "Sundae-Fraise",
                   LatinName = "Hydrangea paniculata 'Sundae-Fraise'",
                   Description = "Med det nätta formatet och det hängande växtsättet passar hängsälgen i kruka väldigt fint men också mitt i en större plantering för att skapa höjd. Fördelen med att den är uppstammad är att man kan plantera olika sommarblommor" +
                   " eller perenner under den. Samma sak när hängsälg står i rabatten, ett litet träd med videkissar blir perfekt med blommor nedanför.",
@@ -416,7 +416,156 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   SubCategoryId = 7
               }
            );
+        modelBuilder.Entity<ProductImage>().HasData(
+           new ProductImage
+           {
+               Id = 1,
+               ImageUrl=@"\images\products\product-1\startbild.jpg",
+               ProductId=1
+          
+           },
+          new ProductImage
+          {
+              Id = 2,
+              ImageUrl = @"\images\products\product-2\startbild.jpg",
+              ProductId = 2
 
+          },
+           new ProductImage
+           {
+               Id = 3,
+               ImageUrl = @"\images\products\product-3\startbild.jpg",
+               ProductId = 3
+
+           },
+           new ProductImage
+           {
+               Id = 4,
+               ImageUrl = @"\images\products\product-4\startbild.jpg",
+               ProductId = 4
+
+           },
+          new ProductImage
+          {
+              Id = 5,
+              ImageUrl = @"\images\products\product-5\startbild.jpg",
+              ProductId = 5
+
+          },
+          new ProductImage
+          {
+              Id = 6,
+              ImageUrl = @"\images\products\product-6\startbild.jpg",
+              ProductId = 6
+
+          },
+          new ProductImage
+          {
+              Id = 7,
+              ImageUrl = @"\images\products\product-7\startbild.jpg",
+              ProductId = 7
+
+          },
+          new ProductImage
+          {
+              Id = 8,
+              ImageUrl = @"\images\products\product-8\startbild.jpg",
+              ProductId = 8
+
+          },
+          new ProductImage
+          {
+              Id = 9,
+              ImageUrl = @"\images\products\product-9\startbild.jpg",
+              ProductId = 9
+
+          },
+          new ProductImage
+          {
+              Id = 10,
+              ImageUrl = @"\images\products\product-10\startbild.jpg",
+              ProductId = 10
+
+          },
+          new ProductImage
+          {
+              Id = 11,
+              ImageUrl = @"\images\products\product-11\startbild.jpg",
+              ProductId = 11
+
+          },
+          new ProductImage
+          {
+              Id = 12,
+              ImageUrl = @"\images\products\product-12\startbild.jpg",
+              ProductId = 12
+
+          },
+          new ProductImage
+          {
+              Id = 13,
+              ImageUrl = @"\images\products\product-13\startbild.jpg",
+              ProductId = 13
+
+          },
+          new ProductImage
+          {
+              Id = 14,
+              ImageUrl = @"\images\products\product-14\startbild.jpg",
+              ProductId = 14
+
+          },
+          new ProductImage
+          {
+              Id = 15,
+              ImageUrl = @"\images\products\product-15\startbild.jpg",
+              ProductId = 15
+
+          },
+          new ProductImage
+          {
+              Id = 16,
+              ImageUrl = @"\images\products\product-16\startbild.jpg",
+              ProductId = 16
+
+          },
+          new ProductImage
+          {
+              Id = 17,
+              ImageUrl = @"\images\products\product-17\startbild.jpg",
+              ProductId = 17
+
+          },
+          new ProductImage
+          {
+              Id = 18,
+              ImageUrl = @"\images\products\product-18\startbild.jpg",
+              ProductId = 18
+
+          },
+          new ProductImage
+          {
+              Id = 19,
+              ImageUrl = @"\images\products\product-19\startbild.jpg",
+              ProductId = 19
+
+          },
+          new ProductImage
+          {
+              Id = 20,
+              ImageUrl = @"\images\products\product-20\startbild.jpg",
+              ProductId = 20
+
+          },
+          new ProductImage
+          {
+              Id = 21,
+              ImageUrl = @"\images\products\product-21\startbild.jpg",
+              ProductId = 21
+
+          }
+
+          );
     }
 
 }

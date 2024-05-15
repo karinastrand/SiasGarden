@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiasGarden.DataAccess.Repository.IRepository;
 using SiasGarden.Models;
+using SiasGarden.Models.ViewModels;
 using SiasGarden.Utility;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -20,10 +21,32 @@ public class PlantController : Controller
         _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
+   
+    public IActionResult Index(string ? selectedCategory)
     {
-        IEnumerable<Product> productList =( _unitOfWork.Product.GetAll(includeProperties:"SubCategory,ProductImages")).OrderBy(u=>u.Name);
-        return View(productList);
+       
+        IEnumerable<Product> productList = (_unitOfWork.Product.GetAll(includeProperties: "SubCategory,ProductImages")).OrderBy(u => u.Name);
+        
+        IEnumerable<Product> selectedProducts = productList;
+        if (!string.IsNullOrEmpty(selectedCategory) && selectedCategory!="Alla")
+        {
+           
+            selectedProducts = productList.Where(u=>u.SubCategory.Category.Name==selectedCategory);
+        }
+        else
+        {
+            selectedCategory = "Alla";
+           // selectedProducts = productList.Where(u => u.SubCategory.Category.Name == selectedCategory);
+        }
+        IEnumerable<Category> categoryList = _unitOfWork.Category.GetAll();
+        ProductVM2 productVM2 = new ProductVM2()
+        { 
+            Products = selectedProducts,
+            Categorys = categoryList,
+            SelectedCategory=selectedCategory
+        };
+       
+        return View(productVM2);
     }
     public IActionResult Details(int productId)
     {

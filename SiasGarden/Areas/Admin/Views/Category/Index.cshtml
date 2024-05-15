@@ -20,38 +20,21 @@
                 </a>
             </div>
         </div>
-        <table class="table table-borded table-light table-striped ">
+        <table id="tblData" class="table table-borded table-light table-striped ">
             <thead>
                 <tr>
                     <th class="text-success-emphasis">
                         Namn
                     </th>
-                     <th class="text-success-emphasis">
-                       
-                    </th>
+                
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model.OrderBy(u=>u.Name))
-                {
-                    <tr>
-                        <td class="text-success-emphasis">@item.Name</td>
-                        <td>
-                            <div class="w-50 btn-group" role=" group">
-                                <a asp-controller="Category" asp-action="Upsert" asp-route-id="@item.Id" class="btn btn-success mx-2 rounded">
-                                    <i class="bi bi-pencil-square"></i> Redigera
-                                </a>
-                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2 rounded">
-                                    <i class="bi bi-trash-fill"></i> Ta bort
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-        
-            </tbody>
-    
+           
         </table>
     </div>
     
 </div>
+@section Scripts {
+    <script src="~/js/category.js"></script>
+
+}
