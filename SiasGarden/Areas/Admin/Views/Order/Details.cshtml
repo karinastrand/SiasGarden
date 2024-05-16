@@ -1,20 +1,20 @@
 ﻿@model OrderVM
 <form method="post">
+    <div class="card shadow border-0 mt-2 mb-4">
     <input asp-for="OrderHeader.Id" hidden/>
-    <br />
-    <div class="container">
-        <div class="card">
-            <div class="card-header bg-success text-white ml-0 mb-4">
-                <div class="container row">
-                    <div class="col-12 d-none d-md-block col-md-6 py-3">
+        <div class="card-header bg-success bg-gradient m-lg-0 py-2 rounded">
+            <div class="row">
+               
+                    <div class="col-12 d-none d-md-block col-md-6 py-3 text-white">
                         <i class="bi bi-cart-fill"></i> &nbsp; Ordersammanställning
                     </div>
                     <div class="col-12 col-md-4 offset-md-2 py-3 text-right">
                         <a asp-action="Index" class="btn btn-outline-light rounded form-control btn-sm">Tillbaka till orderlistan</a>
                     </div>
-                </div>
+               
             </div>
-            <div class="card-body">
+        </div>
+        <div class="card-body">
                 <div class="container rounded p-2">
                     <div class="row">
                         <div class="col-12 col-lg-6 pb-4">
@@ -177,7 +177,7 @@
                                 </div>
                             @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                             {
-                                <button type="submit" asp-action="UpdateOrderDetails" class="btn btn-primary form-control my-1 rounded"  >Uppdatera Orderdetaljer</button>
+                                <button type="submit" asp-action="UpdateOrderDetails" class="btn btn-success form-control my-1 rounded mb-1"  >Uppdatera Orderdetaljer</button>
                             }
 
                         </div>
@@ -242,7 +242,7 @@
         </div>
     </div>
 </form>
-
+</div>
 @section Scripts
 {
     <partial name="_ValidationScriptsPartial" />

@@ -66,7 +66,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new SubCategory
             {
                 Id = 2,
-                Name = "Jordröksväxter",
+                Name = "Löjtnadshjärta",
                 CategoryId = 2
             },
              new SubCategory
@@ -117,8 +117,38 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Id = 10,
                 Name = "Fruktträd",
                 CategoryId = 5
+            },
+            new SubCategory
+            {
+                Id = 11,
+                Name = "Äpple",
+                CategoryId = 5
+            },
+            new SubCategory
+            {
+                Id = 12,
+                Name = "Plommon",
+                CategoryId = 5
+            },
+            new SubCategory
+            {
+                Id = 13,
+                Name = "Svarta vinbär",
+                CategoryId = 4
+            },
+            new SubCategory
+            {
+                Id = 14,
+                Name = "Kivi",
+                CategoryId = 4
+            },
+            new SubCategory
+            {
+                Id = 15,
+                Name = "Hortensia",
+                CategoryId = 4
             }
-           
+
 
 
            );
@@ -302,7 +332,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 299,
                   
                   ZoneTo = 5,
-                  SubCategoryId = 7
+                  SubCategoryId = 15
               },
               new Product
               {
@@ -329,7 +359,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 149,
                   
                   ZoneTo = 6,
-                  SubCategoryId =8
+                  SubCategoryId =13
               },
               new Product
               {
@@ -343,7 +373,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 379,
                   
                   ZoneTo = 1,
-                  SubCategoryId =8
+                  SubCategoryId =14
               },
               new Product
               {
@@ -357,7 +387,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 520,
                  
                   ZoneTo = 4,
-                  SubCategoryId = 10
+                  SubCategoryId = 11
               },
               new Product
               {
@@ -371,7 +401,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 799,
                  
                   ZoneTo = 3,
-                  SubCategoryId = 10
+                  SubCategoryId = 12
               },
                new Product
                {
@@ -413,7 +443,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                   Price = 450,
                  
                   ZoneTo = 3,
-                  SubCategoryId = 7
+                  SubCategoryId = 15
               }
            );
         modelBuilder.Entity<ProductImage>().HasData(
