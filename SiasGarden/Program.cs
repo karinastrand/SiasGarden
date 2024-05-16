@@ -8,6 +8,7 @@ using SiasGarden.Utility;
 using SiasGarden.Models;
 using Stripe;
 using SiasGarden.DataAccess.Data.DbInitializer;
+using Microsoft.AspNetCore.Authentication.Facebook;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +28,32 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
-builder.Services.AddAuthentication().AddFacebook(option =>
+builder.Services.AddAuthentication().AddFacebook(options =>
 {
-    option.AppId = " 978933270476632";
-    option.AppSecret = "3226488ab0b715d7c729ba79ad06c842";
-}) ; 
+    IConfigurationSection Facebook =
+    builder.Configuration.GetSection("Facebook");
+    options.AppId = Facebook["AppId"];
+    options.AppSecret = Facebook["AppSecret"];
+
+});
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    IConfigurationSection Google =
+    builder.Configuration.GetSection("Google");
+    options.ClientId = Google["ClientId"];
+    options.ClientSecret = Google["ClientSecret"];
+
+});
+
+builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
+{
+    IConfigurationSection Microsoft =
+    builder.Configuration.GetSection("Microsoft");
+    options.ClientId = Microsoft["ClientId"];
+    options.ClientSecret = Microsoft["ClientSecret"];
+
+});
+
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options=>
