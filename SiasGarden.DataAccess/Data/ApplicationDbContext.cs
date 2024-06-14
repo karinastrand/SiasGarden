@@ -60,13 +60,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new SubCategory
             {
                 Id = 1,
-                Name = "Kryddväxt",
+                Name = "Kryddväxter",
                 CategoryId=2
             },
             new SubCategory
             {
                 Id = 2,
-                Name = "Löjtnadshjärta",
+                Name = "Löjtnadshjärtan",
                 CategoryId = 2
             },
              new SubCategory
@@ -84,13 +84,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new SubCategory
             {
                 Id = 5,
-                Name = "Klematis",
+                Name = "Klematisar",
                 CategoryId = 3
             },
             new SubCategory
             {
                 Id = 6,
-                Name = "Kaprifol",
+                Name = "Kaprifoler",
                 CategoryId = 3
             },
             new SubCategory
