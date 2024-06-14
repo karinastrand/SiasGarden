@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(
     options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+//builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 //builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
@@ -28,31 +28,31 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
-builder.Services.AddAuthentication().AddFacebook(options =>
-{
-    IConfigurationSection Facebook =
-    builder.Configuration.GetSection("Facebook");
-    options.AppId = Facebook["AppId"];
-    options.AppSecret = Facebook["AppSecret"];
+//builder.Services.AddAuthentication().AddFacebook(options =>
+//{
+//    IConfigurationSection Facebook =
+//    builder.Configuration.GetSection("Facebook");
+//    options.AppId = Facebook["AppId"];
+//    options.AppSecret = Facebook["AppSecret"];
 
-});
-builder.Services.AddAuthentication().AddGoogle(options =>
-{
-    IConfigurationSection Google =
-    builder.Configuration.GetSection("Google");
-    options.ClientId = Google["ClientId"];
-    options.ClientSecret = Google["ClientSecret"];
+//});
+//builder.Services.AddAuthentication().AddGoogle(options =>
+//{
+//    IConfigurationSection Google =
+//    builder.Configuration.GetSection("Google");
+//    options.ClientId = Google["ClientId"];
+//    options.ClientSecret = Google["ClientSecret"];
 
-});
+//});
 
-builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
-{
-    IConfigurationSection Microsoft =
-    builder.Configuration.GetSection("Microsoft");
-    options.ClientId = Microsoft["ClientId"];
-    options.ClientSecret = Microsoft["ClientSecret"];
+//builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
+//{
+//    IConfigurationSection Microsoft =
+//    builder.Configuration.GetSection("Microsoft");
+//    options.ClientId = Microsoft["ClientId"];
+//    options.ClientSecret = Microsoft["ClientSecret"];
 
-});
+//});
 
 
 builder.Services.AddDistributedMemoryCache();
@@ -80,7 +80,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+//StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
