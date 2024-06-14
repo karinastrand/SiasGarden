@@ -156,7 +156,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Product
             {
                 Id = 1,
-                Name = "Lavendel 'Hidcote'",
+                Name = "Hidcote",
                 LatinName ="Lavendula augustifolia 'Hidcote'",
                 Description = "Blommar rikligt med mörkt blåviolett blommor och har ett kompakt, lågväxande växtsätt. Utvecklas bäst i full sol på väldränerad jord. En av de härdigaste sorterna.",
                 Light="Sol",
@@ -168,7 +168,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Product
             { 
                 Id = 2,
-                Name = "Stäppsalvia",
+                Name = "Caradonna",
                 LatinName ="Salvia nemorosa 'Caradonna'",
                 Description= "Blomvillig och lättskött perenn för soliga lägen med djupt, mörklila blomax på purpurfärgade stjälkar. Blommar rikligt och länge.",
                 Price=49,
@@ -197,7 +197,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new Product
             {
                 Id = 4,
-                Name = "Löjtnadshjärta 'Alba'",
+                Name = "Alba",
                 LatinName = "Lamprocapnos spectabilis 'Alba'",
                 Description = "Vacker, lättodlad perenn med hjärtformade blommor i vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge. " +
                 "för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.",
@@ -270,7 +270,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
              new Product
              {
                  Id = 9,
-                 Name = "Clematis Hisako",
+                 Name = "Hisako",
                 
                  Description = "Vacker hybrid som blommar länge från sommar till tidig höst med sammetsröda blommor mot mörkgrönt bladverk. Trivs i sol–halvskugga i fukthållande, väldränerad jord. Beskärningsgrupp 2.",
                  Light = "Sol-halvskugga",
@@ -283,7 +283,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 10,
-                  Name = "Clematis 'Ville de Lyon'",
+                  Name = "Ville de Lyon",
                  
                   Description = "Storblommig klematis med läckert körsbärsröda blommor. Blommar under en lång tid. Blomrik och tålig. För soliga till halvskuggiga lägen. Beskärningsgrupp 3.",
                   Light = "Sol-halvskugga",
@@ -296,7 +296,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 11,
-                  Name = "Kaprifol 'Goldflame'",
+                  Name = "Goldflame",
                   LatinName = "Lonicera heckrottii 'Goldflame'",
                   Description = "Lonicera heckrottii 'Goldflame' är en lättodlad och vacker kaprifol. Sorten är kraftfull och snabbväxande. Blommar med rörformiga, rosa/rödrosa blommor under juni - augusti. På hösten kommer dekorativa oätliga röda bär. Bladen är ovala, medelstora, blågröna och ger fin gul höstfärg. Doften är frisk, intensivt och fantastisk. " +
                   "Sorten är mycket tålig och ger riklig blomning på en solig plats. Älskas av fjärilar, bin och humlor",
@@ -350,7 +350,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 15,
-                  Name = "Svarta vinbär 'Öjebyn'",
+                  Name = "Öjebyn",
                   LatinName = "Ribes nigrum 'Öjebyn'",
                   Description = "Kraftig med lätt överhängande grenar och rik skörd av svarta bär i rejäla klasar. Härdig och motståndskraftig mot mjöldagg." +
                   " Trivs i sol-halvskugga i väldränerad, näringsrik, fuktighetshållande jord.",
@@ -364,7 +364,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
               new Product
               {
                   Id = 16,
-                  Name = "Kivi 'Jenny'",
+                  Name = "Jenny",
                   LatinName = "Actinidia deliciosa 'Jenny'",
                   Description = "Frodig slingerväxt som får gräddvita, doftande blommor och små äggformade, bruna frukter med hårigt skal och grönt," +
                   " sötsyrligt fruktkött. Självfertil men gynnas av samplantering med hanplanta. Ger bäst skörd på en varm solig och skyddad plats, gärna i växthus.",
