@@ -17,7 +17,7 @@ namespace SiasGarden.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -432,7 +432,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 60,
                             LatinName = "Lavendula augustifolia 'Hidcote'",
                             Light = "Sol",
-                            Name = "Lavendel 'Hidcote'",
+                            Name = "Hidcote",
                             Price = 59.0,
                             SubCategoryId = 1,
                             ZoneTo = 5
@@ -444,7 +444,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 60,
                             LatinName = "Salvia nemorosa 'Caradonna'",
                             Light = "Sol",
-                            Name = "Stäppsalvia 'Caradonna'",
+                            Name = "Caradonna",
                             Price = 49.0,
                             SubCategoryId = 1,
                             ZoneTo = 3
@@ -456,7 +456,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 40,
                             LatinName = "Lamprocapnos specabilis 'Valentine'",
                             Light = "Sol till halvskugga",
-                            Name = "Löjtnatshjärta 'Valentine'",
+                            Name = "Valentine",
                             Price = 199.0,
                             SubCategoryId = 2,
                             ZoneTo = 3
@@ -468,7 +468,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 40,
                             LatinName = "Lamprocapnos spectabilis 'Alba'",
                             Light = "Sol till halvskugga",
-                            Name = "Löjtnadshjärta 'Alba'",
+                            Name = "Alba",
                             Price = 84.0,
                             SubCategoryId = 2,
                             ZoneTo = 9
@@ -523,7 +523,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Vacker hybrid som blommar länge från sommar till tidig höst med sammetsröda blommor mot mörkgrönt bladverk. Trivs i sol–halvskugga i fukthållande, väldränerad jord. Beskärningsgrupp 2.",
                             Height = 200,
                             Light = "Sol-halvskugga",
-                            Name = "Clematis Hisako",
+                            Name = "Hisako",
                             Price = 350.0,
                             SubCategoryId = 5,
                             ZoneTo = 6
@@ -534,7 +534,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Storblommig klematis med läckert körsbärsröda blommor. Blommar under en lång tid. Blomrik och tålig. För soliga till halvskuggiga lägen. Beskärningsgrupp 3.",
                             Height = 400,
                             Light = "Sol-halvskugga",
-                            Name = "Clematis 'Ville de Lyon'",
+                            Name = "Ville de Lyon",
                             Price = 199.0,
                             SubCategoryId = 5,
                             ZoneTo = 5
@@ -546,7 +546,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 350,
                             LatinName = "Lonicera heckrottii 'Goldflame'",
                             Light = "Sol-halvskugga",
-                            Name = "Kaprifol 'Goldflame'",
+                            Name = "Goldflame",
                             Price = 28.0,
                             SubCategoryId = 6,
                             ZoneTo = 3
@@ -570,9 +570,9 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 250,
                             LatinName = "Hydrangea paniculata 'Vanille-Fraise'",
                             Light = "Sol-halvskugga",
-                            Name = "Vipphortensia 'Vanille-Fraise'",
+                            Name = "Vanille-Fraise",
                             Price = 299.0,
-                            SubCategoryId = 7,
+                            SubCategoryId = 15,
                             ZoneTo = 5
                         },
                         new
@@ -581,7 +581,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Description = "Syrenbuddleja kallas även för fjärilsbuske, då den är känd för att locka till sig fjärilar. Fungerar att planteras både som solitär och i grupp. Anses vara mindre smaklig för rådjur.",
                             Height = 199,
                             LatinName = "Buddleja davidii 'Royal Red'",
-                            Name = "Syrenbuddleja 'Royal Red'",
+                            Name = "Syrenbuddleja",
                             Price = 340.0,
                             SubCategoryId = 7,
                             ZoneTo = 3
@@ -593,9 +593,9 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 150,
                             LatinName = "Ribes nigrum 'Öjebyn'",
                             Light = "Sol-halvskugga",
-                            Name = "Svarta vinbär 'Öjebyn'",
+                            Name = "Öjebyn",
                             Price = 149.0,
-                            SubCategoryId = 8,
+                            SubCategoryId = 13,
                             ZoneTo = 6
                         },
                         new
@@ -605,9 +605,9 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 400,
                             LatinName = "Actinidia deliciosa 'Jenny'",
                             Light = "Sol",
-                            Name = "Kivi 'Jenny'",
+                            Name = "Jenny",
                             Price = 379.0,
-                            SubCategoryId = 8,
+                            SubCategoryId = 14,
                             ZoneTo = 1
                         },
                         new
@@ -619,7 +619,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol-halvskugga",
                             Name = "Aroma",
                             Price = 520.0,
-                            SubCategoryId = 10,
+                            SubCategoryId = 11,
                             ZoneTo = 4
                         },
                         new
@@ -631,7 +631,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Light = "Sol-halvskugga",
                             Name = "Victoria",
                             Price = 799.0,
-                            SubCategoryId = 10,
+                            SubCategoryId = 12,
                             ZoneTo = 3
                         },
                         new
@@ -641,7 +641,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 250,
                             LatinName = "Salix integra 'Hakuro-nishiki'",
                             Light = "Sol",
-                            Name = "Eukalyptusvide 'Hakuro-nishiki'",
+                            Name = "Eukalyptusvide",
                             Price = 799.0,
                             SubCategoryId = 9,
                             ZoneTo = 2
@@ -653,7 +653,7 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 450,
                             LatinName = "Salix caprea 'Kilmarnock'",
                             Light = "Sol",
-                            Name = "Hängsälg 'Kilmarnock'",
+                            Name = "Hängsälg",
                             Price = 100.0,
                             SubCategoryId = 9,
                             ZoneTo = 6
@@ -665,9 +665,9 @@ namespace SiasGarden.DataAccess.Migrations
                             Height = 120,
                             LatinName = "Hydrangea paniculata 'Sundae-Fraise'",
                             Light = "Sol-halvskugga",
-                            Name = "Vipphortensia 'Sundae-Fraise'",
+                            Name = "Sundae-Fraise",
                             Price = 450.0,
-                            SubCategoryId = 7,
+                            SubCategoryId = 15,
                             ZoneTo = 3
                         });
                 });
@@ -703,7 +703,7 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            ImageUrl = "\\images\\products\\product-2\\startbild.jpg.jpg",
+                            ImageUrl = "\\images\\products\\product-2\\startbild.jpg",
                             ProductId = 2
                         },
                         new
@@ -874,38 +874,38 @@ namespace SiasGarden.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
-                            Name = "Kryddväxt"
+                            CategoryId = 2,
+                            Name = "Kryddväxter"
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 1,
-                            Name = "Jordröksväxter"
+                            CategoryId = 2,
+                            Name = "Löjtnadshjärtan"
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Name = "Buskrosor"
                         },
                         new
                         {
                             Id = 4,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Name = "Rabattrosor"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 3,
-                            Name = "Klematis"
+                            Name = "Klematisar"
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 3,
-                            Name = "Kaprifol"
+                            Name = "Kaprifoler"
                         },
                         new
                         {
@@ -930,6 +930,36 @@ namespace SiasGarden.DataAccess.Migrations
                             Id = 10,
                             CategoryId = 5,
                             Name = "Fruktträd"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 5,
+                            Name = "Äpple"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 5,
+                            Name = "Plommon"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 4,
+                            Name = "Svarta vinbär"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 4,
+                            Name = "Kivi"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 4,
+                            Name = "Hortensia"
                         });
                 });
 

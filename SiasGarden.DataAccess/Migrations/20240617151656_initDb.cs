@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SiasGarden.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDb : Migration
+    public partial class initDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -349,16 +349,21 @@ namespace SiasGarden.DataAccess.Migrations
                 columns: new[] { "Id", "CategoryId", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1, "Kryddväxt" },
-                    { 2, 1, "Jordröksväxter" },
-                    { 3, 2, "Buskrosor" },
-                    { 4, 2, "Rabattrosor" },
-                    { 5, 3, "Klematis" },
-                    { 6, 3, "Kaprifol" },
+                    { 1, 2, "Kryddväxter" },
+                    { 2, 2, "Löjtnadshjärtan" },
+                    { 3, 1, "Buskrosor" },
+                    { 4, 1, "Rabattrosor" },
+                    { 5, 3, "Klematisar" },
+                    { 6, 3, "Kaprifoler" },
                     { 7, 4, "Prydnadsbuskar" },
                     { 8, 4, "Bärbuskar" },
                     { 9, 5, "Prydnadsträd" },
-                    { 10, 5, "Fruktträd" }
+                    { 10, 5, "Fruktträd" },
+                    { 11, 5, "Äpple" },
+                    { 12, 5, "Plommon" },
+                    { 13, 4, "Svarta vinbär" },
+                    { 14, 4, "Kivi" },
+                    { 15, 4, "Hortensia" }
                 });
 
             migrationBuilder.InsertData(
@@ -366,27 +371,27 @@ namespace SiasGarden.DataAccess.Migrations
                 columns: new[] { "Id", "Description", "Height", "LatinName", "Light", "Name", "Price", "SubCategoryId", "ZoneTo" },
                 values: new object[,]
                 {
-                    { 1, "Blommar rikligt med mörkt blåviolett blommor och har ett kompakt, lågväxande växtsätt. Utvecklas bäst i full sol på väldränerad jord. En av de härdigaste sorterna.", 60, "Lavendula augustifolia 'Hidcote'", "Sol", "Lavendel 'Hidcote'", 59.0, 1, 5 },
-                    { 2, "Blomvillig och lättskött perenn för soliga lägen med djupt, mörklila blomax på purpurfärgade stjälkar. Blommar rikligt och länge.", 60, "Salvia nemorosa 'Caradonna'", "Sol", "Stäppsalvia 'Caradonna'", 49.0, 1, 3 },
-                    { 3, "Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.", 40, "Lamprocapnos specabilis 'Valentine'", "Sol till halvskugga", "Löjtnatshjärta 'Valentine'", 199.0, 2, 3 },
-                    { 4, "Vacker, lättodlad perenn med hjärtformade blommor i vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge. för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.", 40, "Lamprocapnos spectabilis 'Alba'", "Sol till halvskugga", "Löjtnadshjärta 'Alba'", 84.0, 2, 9 },
+                    { 1, "Blommar rikligt med mörkt blåviolett blommor och har ett kompakt, lågväxande växtsätt. Utvecklas bäst i full sol på väldränerad jord. En av de härdigaste sorterna.", 60, "Lavendula augustifolia 'Hidcote'", "Sol", "Hidcote", 59.0, 1, 5 },
+                    { 2, "Blomvillig och lättskött perenn för soliga lägen med djupt, mörklila blomax på purpurfärgade stjälkar. Blommar rikligt och länge.", 60, "Salvia nemorosa 'Caradonna'", "Sol", "Caradonna", 49.0, 1, 3 },
+                    { 3, "Vacker lättodlad perenn med hjärformade blommor i rött och vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.", 40, "Lamprocapnos specabilis 'Valentine'", "Sol till halvskugga", "Valentine", 199.0, 2, 3 },
+                    { 4, "Vacker, lättodlad perenn med hjärtformade blommor i vitt. Klipp ner efter blomning för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge. för chans till ytterligare en blomning senare på sommaren. Finast i halvskuggigt, skyddat läge.", 40, "Lamprocapnos spectabilis 'Alba'", "Sol till halvskugga", "Alba", 84.0, 2, 9 },
                     { 5, "Klasblommig ros med kompakt växtsätt. Remonterar från sommar till höst med fyllda aprikosgula blommor. Medelstark doft. Frisk sort. Trivs i sol-halvskugga i väldränerad näringsrik jord.", 80, null, "Sol till halvskugga", "Hansestadt Rostock", 289.0, 4, 4 },
                     { 6, "Sensationell storblommig rabattros med stora, fyllda, svagt doftande gräddvita blommor med körsbärsröda kanter. Blommar från juni till oktober. Trivs i sol-halvskugga i väldränerad, näringsrik jord.", 70, null, "Sol", "Nostalgi", 299.0, 4, 4 },
                     { 7, "Buskros med upprätt och tätt växtsätt. Bladverket är läderartat, mörkgrönt och glänsande. Blommar med tätt fyllda, mörkt sammetsröda blommor som har en medelstark doft. Riklig blomning nästan oavbrutet från juni och in på senhösten. Mycket användbar då den kan planteras i grupper, tillsammans med perenner, som kantväxt och häckväxt, blir även fin i kruka. Trivs bäst i soliga lägen i näringsrik jord.", 150, null, "Sol", "Isabel Renaissance", 345.0, 3, 3 },
                     { 8, "Buskros med ett kraftigt, buskigt växtsätt. Bladverket är friskt, grönt där all nytillväxt är vackert röd. Praktfull blomning med klasar av gula, fyllda blommor som ljusnar under blomningen till en härlig svavelgul nyans. Doftar angenämt och tål regn bra. Är en frisk ros som är motståndskraftig mot olika svampsjukdomar", 100, null, "Sol", "High Voltage", 345.0, 3, 5 },
-                    { 9, "Vacker hybrid som blommar länge från sommar till tidig höst med sammetsröda blommor mot mörkgrönt bladverk. Trivs i sol–halvskugga i fukthållande, väldränerad jord. Beskärningsgrupp 2.", 200, null, "Sol-halvskugga", "Clematis Hisako", 350.0, 5, 6 },
-                    { 10, "Storblommig klematis med läckert körsbärsröda blommor. Blommar under en lång tid. Blomrik och tålig. För soliga till halvskuggiga lägen. Beskärningsgrupp 3.", 400, null, "Sol-halvskugga", "Clematis 'Ville de Lyon'", 199.0, 5, 5 },
-                    { 11, "Lonicera heckrottii 'Goldflame' är en lättodlad och vacker kaprifol. Sorten är kraftfull och snabbväxande. Blommar med rörformiga, rosa/rödrosa blommor under juni - augusti. På hösten kommer dekorativa oätliga röda bär. Bladen är ovala, medelstora, blågröna och ger fin gul höstfärg. Doften är frisk, intensivt och fantastisk. Sorten är mycket tålig och ger riklig blomning på en solig plats. Älskas av fjärilar, bin och humlor", 350, "Lonicera heckrottii 'Goldflame'", "Sol-halvskugga", "Kaprifol 'Goldflame'", 28.0, 6, 3 },
+                    { 9, "Vacker hybrid som blommar länge från sommar till tidig höst med sammetsröda blommor mot mörkgrönt bladverk. Trivs i sol–halvskugga i fukthållande, väldränerad jord. Beskärningsgrupp 2.", 200, null, "Sol-halvskugga", "Hisako", 350.0, 5, 6 },
+                    { 10, "Storblommig klematis med läckert körsbärsröda blommor. Blommar under en lång tid. Blomrik och tålig. För soliga till halvskuggiga lägen. Beskärningsgrupp 3.", 400, null, "Sol-halvskugga", "Ville de Lyon", 199.0, 5, 5 },
+                    { 11, "Lonicera heckrottii 'Goldflame' är en lättodlad och vacker kaprifol. Sorten är kraftfull och snabbväxande. Blommar med rörformiga, rosa/rödrosa blommor under juni - augusti. På hösten kommer dekorativa oätliga röda bär. Bladen är ovala, medelstora, blågröna och ger fin gul höstfärg. Doften är frisk, intensivt och fantastisk. Sorten är mycket tålig och ger riklig blomning på en solig plats. Älskas av fjärilar, bin och humlor", 350, "Lonicera heckrottii 'Goldflame'", "Sol-halvskugga", "Goldflame", 28.0, 6, 3 },
                     { 12, "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande, brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.", 450, "Lonicera x tellmanniana'", "Sol-halvskugga", "Tellmannskaprifol", 199.0, 6, 4 },
-                    { 13, "Elegant, storblommig sort med buskigt, upprätt växtsätt. Blommar länge med gräddvita, fylliga klasar som skiftar till mörkrosa och avslutas i mörkrosa nyanser. Trivs i sol till halvskugga på mullrik, lätt kemiskt sur jord.", 250, "Hydrangea paniculata 'Vanille-Fraise'", "Sol-halvskugga", "Vipphortensia 'Vanille-Fraise'", 299.0, 7, 5 },
-                    { 14, "Syrenbuddleja kallas även för fjärilsbuske, då den är känd för att locka till sig fjärilar. Fungerar att planteras både som solitär och i grupp. Anses vara mindre smaklig för rådjur.", 199, "Buddleja davidii 'Royal Red'", null, "Syrenbuddleja 'Royal Red'", 340.0, 7, 3 },
-                    { 15, "Kraftig med lätt överhängande grenar och rik skörd av svarta bär i rejäla klasar. Härdig och motståndskraftig mot mjöldagg. Trivs i sol-halvskugga i väldränerad, näringsrik, fuktighetshållande jord.", 150, "Ribes nigrum 'Öjebyn'", "Sol-halvskugga", "Svarta vinbär 'Öjebyn'", 149.0, 8, 6 },
-                    { 16, "Frodig slingerväxt som får gräddvita, doftande blommor och små äggformade, bruna frukter med hårigt skal och grönt, sötsyrligt fruktkött. Självfertil men gynnas av samplantering med hanplanta. Ger bäst skörd på en varm solig och skyddad plats, gärna i växthus.", 400, "Actinidia deliciosa 'Jenny'", "Sol", "Kivi 'Jenny'", 379.0, 8, 1 },
-                    { 17, "Medelstarkväxande, populär sort som ger gulgröna äpplen med röd solsida. Har ett fint, fast fruktkött med en sötsyrlig smak. Frisk sort. Kan lagras fram till jul. Pollineras av bl. a 'Alice' och 'Ingrid Marie'. Bäst skörd i soligt läge.", 500, "Malus domestica 'Aroma'", "Sol-halvskugga", "Aroma", 520.0, 10, 4 },
-                    { 18, "Svagväxande, populär sort som får stora, medeltidiga skördar med stora, rödgula frukter med ljusviolett daggig yta. Fast fruktkött med söt smak. Självfertil. Ger bäst skörd i soligt läge på väldränerad och näringsrik jord.", 450, "Prunus domestica 'Victoria'", "Sol-halvskugga", "Victoria", 799.0, 10, 3 },
-                    { 19, "Odlingsvärt litet träd med tät, rundad krona. Vackert ljusgrönt bladverk med vitbrokiga skott som har rosatonad anstrykning på nytillväxten. Trivs i skyddat, soligt läge på väldränerad, näringsrik jord.", 250, "Salix integra 'Hakuro-nishiki'", "Sol", "Eukalyptusvide 'Hakuro-nishiki'", 799.0, 9, 2 },
-                    { 20, "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande, brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.", 450, "Salix caprea 'Kilmarnock'", "Sol", "Hängsälg 'Kilmarnock'", 100.0, 9, 6 },
-                    { 21, "Med det nätta formatet och det hängande växtsättet passar hängsälgen i kruka väldigt fint men också mitt i en större plantering för att skapa höjd. Fördelen med att den är uppstammad är att man kan plantera olika sommarblommor eller perenner under den. Samma sak när hängsälg står i rabatten, ett litet träd med videkissar blir perfekt med blommor nedanför.", 120, "Hydrangea paniculata 'Sundae-Fraise'", "Sol-halvskugga", "Vipphortensia 'Sundae-Fraise'", 450.0, 7, 3 }
+                    { 13, "Elegant, storblommig sort med buskigt, upprätt växtsätt. Blommar länge med gräddvita, fylliga klasar som skiftar till mörkrosa och avslutas i mörkrosa nyanser. Trivs i sol till halvskugga på mullrik, lätt kemiskt sur jord.", 250, "Hydrangea paniculata 'Vanille-Fraise'", "Sol-halvskugga", "Vanille-Fraise", 299.0, 15, 5 },
+                    { 14, "Syrenbuddleja kallas även för fjärilsbuske, då den är känd för att locka till sig fjärilar. Fungerar att planteras både som solitär och i grupp. Anses vara mindre smaklig för rådjur.", 199, "Buddleja davidii 'Royal Red'", null, "Syrenbuddleja", 340.0, 7, 3 },
+                    { 15, "Kraftig med lätt överhängande grenar och rik skörd av svarta bär i rejäla klasar. Härdig och motståndskraftig mot mjöldagg. Trivs i sol-halvskugga i väldränerad, näringsrik, fuktighetshållande jord.", 150, "Ribes nigrum 'Öjebyn'", "Sol-halvskugga", "Öjebyn", 149.0, 13, 6 },
+                    { 16, "Frodig slingerväxt som får gräddvita, doftande blommor och små äggformade, bruna frukter med hårigt skal och grönt, sötsyrligt fruktkött. Självfertil men gynnas av samplantering med hanplanta. Ger bäst skörd på en varm solig och skyddad plats, gärna i växthus.", 400, "Actinidia deliciosa 'Jenny'", "Sol", "Jenny", 379.0, 14, 1 },
+                    { 17, "Medelstarkväxande, populär sort som ger gulgröna äpplen med röd solsida. Har ett fint, fast fruktkött med en sötsyrlig smak. Frisk sort. Kan lagras fram till jul. Pollineras av bl. a 'Alice' och 'Ingrid Marie'. Bäst skörd i soligt läge.", 500, "Malus domestica 'Aroma'", "Sol-halvskugga", "Aroma", 520.0, 11, 4 },
+                    { 18, "Svagväxande, populär sort som får stora, medeltidiga skördar med stora, rödgula frukter med ljusviolett daggig yta. Fast fruktkött med söt smak. Självfertil. Ger bäst skörd i soligt läge på väldränerad och näringsrik jord.", 450, "Prunus domestica 'Victoria'", "Sol-halvskugga", "Victoria", 799.0, 12, 3 },
+                    { 19, "Odlingsvärt litet träd med tät, rundad krona. Vackert ljusgrönt bladverk med vitbrokiga skott som har rosatonad anstrykning på nytillväxten. Trivs i skyddat, soligt läge på väldränerad, näringsrik jord.", 250, "Salix integra 'Hakuro-nishiki'", "Sol", "Eukalyptusvide", 799.0, 9, 2 },
+                    { 20, "Färggrann sort med kraftigt, slingrande och täckande växtsätt med frodigt blågrönt bladverk. Blommar rikligt med doftande, brandgula blommor varvat med bronsgula knoppar. Bildar röda, oätliga bär. Trivs i sol till halvskugga på väldränerad, näringsrik jord.3.", 450, "Salix caprea 'Kilmarnock'", "Sol", "Hängsälg", 100.0, 9, 6 },
+                    { 21, "Med det nätta formatet och det hängande växtsättet passar hängsälgen i kruka väldigt fint men också mitt i en större plantering för att skapa höjd. Fördelen med att den är uppstammad är att man kan plantera olika sommarblommor eller perenner under den. Samma sak när hängsälg står i rabatten, ett litet träd med videkissar blir perfekt med blommor nedanför.", 120, "Hydrangea paniculata 'Sundae-Fraise'", "Sol-halvskugga", "Sundae-Fraise", 450.0, 15, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -395,7 +400,7 @@ namespace SiasGarden.DataAccess.Migrations
                 values: new object[,]
                 {
                     { 1, "\\images\\products\\product-1\\startbild.jpg", 1 },
-                    { 2, "\\images\\products\\product-2\\startbild.jpg.jpg", 2 },
+                    { 2, "\\images\\products\\product-2\\startbild.jpg", 2 },
                     { 3, "\\images\\products\\product-3\\startbild.jpg", 3 },
                     { 4, "\\images\\products\\product-4\\startbild.jpg", 4 },
                     { 5, "\\images\\products\\product-5\\startbild.jpg", 5 },

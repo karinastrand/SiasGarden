@@ -8,7 +8,9 @@ using SiasGarden.Utility;
 using SiasGarden.Models;
 using Stripe;
 using SiasGarden.DataAccess.Data.DbInitializer;
-using Microsoft.AspNetCore.Authentication.Facebook;
+//using Microsoft.AspNetCore.Authentication.Facebook;
+//using Microsoft.Extensions.Configuration;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +19,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(
     options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 //builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
@@ -28,31 +30,40 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
-//builder.Services.AddAuthentication().AddFacebook(options =>
-//{
-//    IConfigurationSection Facebook =
-//    builder.Configuration.GetSection("Facebook");
-//    options.AppId = Facebook["AppId"];
-//    options.AppSecret = Facebook["AppSecret"];
 
-//});
-//builder.Services.AddAuthentication().AddGoogle(options =>
-//{
-//    IConfigurationSection Google =
-//    builder.Configuration.GetSection("Google");
-//    options.ClientId = Google["ClientId"];
-//    options.ClientSecret = Google["ClientSecret"];
 
-//});
+if (builder.Environment.IsProduction())
+{
+    builder.Configuration.AddAzureKeyVault(
+        new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
+        new DefaultAzureCredential());
+}
 
-//builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
-//{
-//    IConfigurationSection Microsoft =
-//    builder.Configuration.GetSection("Microsoft");
-//    options.ClientId = Microsoft["ClientId"];
-//    options.ClientSecret = Microsoft["ClientSecret"];
+builder.Services.AddAuthentication().AddFacebook(options =>
+{
+    IConfigurationSection Facebook =
+    builder.Configuration.GetSection("Facebook");
+    options.AppId = Facebook["AppId"];
+    options.AppSecret = Facebook["AppSecret"];
 
-//});
+});
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    IConfigurationSection Google =
+    builder.Configuration.GetSection("Google");
+    options.ClientId = Google["ClientId"];
+    options.ClientSecret = Google["ClientSecret"];
+
+});
+
+builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
+{
+    IConfigurationSection Microsoft =
+    builder.Configuration.GetSection("Microsoft");
+    options.ClientId = Microsoft["ClientId"];
+    options.ClientSecret = Microsoft["ClientSecret"];
+
+});
 
 
 builder.Services.AddDistributedMemoryCache();
