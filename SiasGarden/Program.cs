@@ -32,12 +32,12 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 
 
-if (builder.Environment.IsProduction())
-{
+//if (builder.Environment.IsProduction())
+//{
     builder.Configuration.AddAzureKeyVault(
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
-}
+//}
 
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
