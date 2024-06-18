@@ -45,14 +45,14 @@ builder.Services.AddAuthentication().AddFacebook(options =>
     options.AppSecret = Facebook["AppSecret"];
 
 });
-builder.Services.AddAuthentication().AddGoogle(options =>
-{
-    IConfigurationSection Google =
-    builder.Configuration.GetSection("Google");
-    options.ClientId = Google["ClientId"];
-    options.ClientSecret = Google["ClientSecret"];
+//builder.Services.AddAuthentication().AddGoogle(options =>
+//{
+//    IConfigurationSection Google =
+//    builder.Configuration.GetSection("Google");
+//    options.ClientId = Google["ClientId"];
+//    options.ClientSecret = Google["ClientSecret"];
 
-});
+//});
 
 builder.Services.AddAuthentication().AddMicrosoftAccount(options =>
 {
