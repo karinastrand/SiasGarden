@@ -8,8 +8,6 @@ using SiasGarden.Utility;
 using SiasGarden.Models;
 using Stripe;
 using SiasGarden.DataAccess.Data.DbInitializer;
-//using Microsoft.AspNetCore.Authentication.Facebook;
-//using Microsoft.Extensions.Configuration;
 using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,12 +30,12 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 
 
-//if (builder.Environment.IsProduction())
-//{
+if (builder.Environment.IsProduction())
+{
     builder.Configuration.AddAzureKeyVault(
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
-//}
+}
 
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
@@ -91,7 +89,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-//StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
