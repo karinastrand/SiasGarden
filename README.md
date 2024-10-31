@@ -1,5 +1,6 @@
 # SiasGarden
-## En e-commmerce applikation för växtförsäljning.
+## En e-commmerce applikation för växtförsäljning. 
+Jag byggde den som slutproject på Lexicon i Malmö, Programmering påbyggnad.
 Det är en ASP.NET Core Web App (MVC).
 Skärmklipp från SiasGarden:
 
